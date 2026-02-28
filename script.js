@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterButtons = document.querySelectorAll(".filter-btn");
   const eventCards = document.querySelectorAll("[data-category]");
   const scrollLinks = document.querySelectorAll("[data-scroll]");
+  const countdownEl = document.querySelector("#countdown");
 
   // Reveal animations using Intersection Observer
   revealTargets.forEach((el) => el.classList.add("reveal"));
@@ -56,5 +57,38 @@ document.addEventListener("DOMContentLoaded", () => {
         target.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
+  }
+
+  // Countdown timer for the main hero
+  if (countdownEl) {
+    const targetTime = new Date("2026-03-07T09:30:00+05:30").getTime();
+    const unitMap = {
+      days: countdownEl.querySelector('[data-unit="days"]'),
+      hours: countdownEl.querySelector('[data-unit="hours"]'),
+      minutes: countdownEl.querySelector('[data-unit="minutes"]'),
+      seconds: countdownEl.querySelector('[data-unit="seconds"]'),
+    };
+
+    const updateCountdown = () => {
+      const now = Date.now();
+      const diff = Math.max(0, targetTime - now);
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      if (unitMap.days)
+        unitMap.days.textContent = String(days).padStart(2, "0");
+      if (unitMap.hours)
+        unitMap.hours.textContent = String(hours).padStart(2, "0");
+      if (unitMap.minutes)
+        unitMap.minutes.textContent = String(minutes).padStart(2, "0");
+      if (unitMap.seconds)
+        unitMap.seconds.textContent = String(seconds).padStart(2, "0");
+    };
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   }
 });
