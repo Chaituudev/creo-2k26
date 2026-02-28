@@ -22,7 +22,7 @@
           <a href="index.html#prize">Prize Pool</a>
           <a class="active" href="events.html">Events</a>
         </nav>
-        <a class="btn btn-ghost" href="#grid">Filter Events</a>
+        <a class="btn btn-ghost" href="#grid" data-scroll>Filter Events</a>
       </div>
     </header>
 
@@ -33,21 +33,22 @@
             <span class="eyebrow">Discover</span>
             <h1>Events lineup</h1>
             <p class="lede">
-              Eleven official challenges across adventure, engineering, and
-              creative tracks. Find your arena and dive in.
+              Fourteen official challenges across coding, circuits, robotics,
+              design, and campus adventures. Pick your arena and dive in.
             </p>
             <div class="pill-row">
-              <span class="pill">11 events</span>
-              <span class="pill">Campus-wide</span>
-              <span class="pill">Fresh rulebooks</span>
+              <span class="pill">14 events</span>
+              <span class="pill">Clear rules</span>
+              <span class="pill">Smooth registration</span>
             </div>
           </div>
           <div class="hero-visual" data-reveal>
             <div class="glass-card">
               <p class="label">Filter by category</p>
               <p class="section-lede">
-                Browse adventure, technical, and creative tracks. Each card
-                opens a detailed page with rules, rounds, and registration info.
+                Browse the lineup by coding, robotics, design, circuits, survey,
+                or campus adventures. Each card opens the detailed brief with
+                rounds, rules, and registration.
               </p>
             </div>
           </div>
@@ -60,15 +61,17 @@
           <h2>Choose and register</h2>
           <p class="section-lede">
             Use quick filters to browse the events. Each card links to the
-            official brief with rules, rounds, venue, and coordinators.
+            official brief with rounds, coordinators, and the registration link.
           </p>
         </div>
 
         <div class="container filters" data-reveal>
           <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="Technical">Technical</button>
-          <button class="filter-btn" data-filter="Design">Design</button>
+          <button class="filter-btn" data-filter="Coding">Coding</button>
           <button class="filter-btn" data-filter="Robotics">Robotics</button>
+          <button class="filter-btn" data-filter="Design">Design</button>
+          <button class="filter-btn" data-filter="Circuit">Circuit</button>
+          <button class="filter-btn" data-filter="Survey">Survey</button>
           <button class="filter-btn" data-filter="Campus">Campus</button>
         </div>
 
@@ -78,38 +81,31 @@
             <div class="card-body">
               <div class="badge">Campus Adventure Hunt</div>
               <h3>Treasure Hunt 2K26</h3>
-              <p>
-                Decode clues across campus, collect tokens, and win by speed.
-              </p>
+              <p>Decode. Discover. Dominate.</p>
               <a class="btn btn-ghost" href="events/treasure-hunt-2k26.html"
                 >View Details</a
               >
             </div>
           </article>
 
-          <article class="event-card" data-category="Technical">
+          <article class="event-card" data-category="Coding">
             <div class="card-visual gradient-2"></div>
             <div class="card-body">
-              <div class="badge">AI Prompt Engineering</div>
-              <h3>AI Prompt Battle Zone</h3>
-              <p>
-                Multi-round prompt engineering battle using leading AI tools.
-              </p>
-              <a class="btn btn-ghost" href="events/ai-prompt-battle-zone.html"
+              <div class="badge">Coding & Logic</div>
+              <h3>Multi-code Fusion</h3>
+              <p>Code fast. Think smart. Fuse to win.</p>
+              <a class="btn btn-ghost" href="events/multi-code-fusion.html"
                 >View Details</a
               >
             </div>
           </article>
 
-          <article class="event-card" data-category="Technical">
+          <article class="event-card" data-category="Coding">
             <div class="card-visual gradient-3"></div>
             <div class="card-body">
-              <div class="badge">Aptitude + Coding</div>
+              <div class="badge">Logic & Coding</div>
               <h3>AptiCode Challenge 2K26</h3>
-              <p>
-                Solo aptitude and coding knockout with language choice
-                flexibility.
-              </p>
+              <p>Think. Solve. Code.</p>
               <a
                 class="btn btn-ghost"
                 href="events/apticode-challenge-2k26.html"
@@ -118,54 +114,51 @@
             </div>
           </article>
 
-          <article class="event-card" data-category="Technical">
+          <article class="event-card" data-category="Survey">
             <div class="card-visual gradient-4"></div>
             <div class="card-body">
               <div class="badge">Surveying Challenge</div>
               <h3>Survey Master</h3>
-              <p>Field measurement face-off for civil teams.</p>
+              <p>Where accuracy meets excellence.</p>
               <a class="btn btn-ghost" href="events/survey-master.html"
                 >View Details</a
               >
             </div>
           </article>
 
-          <article class="event-card" data-category="Design">
+          <article class="event-card" data-category="Circuit">
             <div class="card-visual gradient-5"></div>
             <div class="card-body">
-              <div class="badge">Digital Design</div>
-              <h3>PexilFusion</h3>
-              <p>Quiz plus on-spot digital poster creation—no AI allowed.</p>
-              <a class="btn btn-ghost" href="events/pexilfusion.html"
+              <div class="badge">Circuit Build</div>
+              <h3>Techthronix</h3>
+              <p>Wired to innovation.</p>
+              <a class="btn btn-ghost" href="events/techthronix.html"
                 >View Details</a
               >
             </div>
           </article>
 
-          <article class="event-card" data-category="Technical">
+          <article class="event-card" data-category="Design">
             <div class="card-visual gradient-1"></div>
             <div class="card-body">
               <div class="badge">Technical Poster</div>
               <h3>Electro-Vista</h3>
-              <p>
-                Poster presentations judged on clarity, creativity, and
-                delivery.
-              </p>
+              <p>Bright ideas, bold presentations.</p>
               <a class="btn btn-ghost" href="events/electro-vista.html"
                 >View Details</a
               >
             </div>
           </article>
 
-          <article class="event-card" data-category="Technical">
+          <article class="event-card" data-category="Design">
             <div class="card-visual gradient-2"></div>
             <div class="card-body">
-              <div class="badge">CAD Design</div>
-              <h3>CAD Master</h3>
-              <p>
-                60-minute AutoCAD design sprint testing accuracy and detail.
-              </p>
-              <a class="btn btn-ghost" href="events/cad-master.html"
+              <div class="badge">Design Excellence</div>
+              <h3>CAD Master (Mech Diploma)</h3>
+              <p>Precision in every line, perfection in every design.</p>
+              <a
+                class="btn btn-ghost"
+                href="events/cad-master-mech-diploma.html"
                 >View Details</a
               >
             </div>
@@ -174,39 +167,34 @@
           <article class="event-card" data-category="Design">
             <div class="card-visual gradient-3"></div>
             <div class="card-body">
-              <div class="badge">Urban Planning</div>
-              <h3>City-Craft</h3>
-              <p>Design and present a scaled city of tomorrow in 2D/3D.</p>
-              <a class="btn btn-ghost" href="events/city-craft.html"
-                >View Details</a
-              >
-            </div>
-          </article>
-
-          <article class="event-card" data-category="Technical">
-            <div class="card-visual gradient-4"></div>
-            <div class="card-body">
-              <div class="badge">Circuit Build</div>
-              <h3>Techthronix</h3>
-              <p>
-                Build the provided circuit fastest with supplied components.
-              </p>
-              <a class="btn btn-ghost" href="events/techthronix.html"
+              <div class="badge">Digital Design</div>
+              <h3>PixelFusion</h3>
+              <p>Where creativity meets innovation.</p>
+              <a class="btn btn-ghost" href="events/pixelfusion.html"
                 >View Details</a
               >
             </div>
           </article>
 
           <article class="event-card" data-category="Robotics">
+            <div class="card-visual gradient-4"></div>
+            <div class="card-body">
+              <div class="badge">Robotics & Precision</div>
+              <h3>Electro Challenge</h3>
+              <p>Master the wire and outrace the clock.</p>
+              <a class="btn btn-ghost" href="events/electro-challenge.html"
+                >View Details</a
+              >
+            </div>
+          </article>
+
+          <article class="event-card" data-category="Design">
             <div class="card-visual gradient-5"></div>
             <div class="card-body">
-              <div class="badge">Robotics Time Trial</div>
-              <h3>RoboChrono Challenge</h3>
-              <p>
-                Complete the track in the least time with three official
-                attempts.
-              </p>
-              <a class="btn btn-ghost" href="events/robochrono-challenge.html"
+              <div class="badge">Design Mastery</div>
+              <h3>CAD Master (Mech Degree)</h3>
+              <p>Precision in every line, perfection in every design.</p>
+              <a class="btn btn-ghost" href="events/cad-master-mech-degree.html"
                 >View Details</a
               >
             </div>
@@ -215,15 +203,46 @@
           <article class="event-card" data-category="Design">
             <div class="card-visual gradient-1"></div>
             <div class="card-body">
-              <div class="badge">Vision Poster Event</div>
-              <h3>Poster Presentation (Vision Board)</h3>
-              <p>
-                Theme-based poster showcase judged on clarity, creativity, and
-                impact.
-              </p>
-              <a
-                class="btn btn-ghost"
-                href="events/poster-presentation-vision-board.html"
+              <div class="badge">Urban Planning</div>
+              <h3>City-Craft</h3>
+              <p>Design the city of tomorrow.</p>
+              <a class="btn btn-ghost" href="events/city-craft.html"
+                >View Details</a
+              >
+            </div>
+          </article>
+
+          <article class="event-card" data-category="Robotics">
+            <div class="card-visual gradient-2"></div>
+            <div class="card-body">
+              <div class="badge">Robotics Time Trial</div>
+              <h3>RoboChrono</h3>
+              <p>Enhance your workflow with innovation.</p>
+              <a class="btn btn-ghost" href="events/robochrono.html"
+                >View Details</a
+              >
+            </div>
+          </article>
+
+          <article class="event-card" data-category="Design">
+            <div class="card-visual gradient-3"></div>
+            <div class="card-body">
+              <div class="badge">Vision Poster</div>
+              <h3>Vision Board</h3>
+              <p>Inspire your future with a vision.</p>
+              <a class="btn btn-ghost" href="events/vision-board.html"
+                >View Details</a
+              >
+            </div>
+          </article>
+
+          <article class="event-card" data-category="Coding">
+            <div class="card-visual gradient-4"></div>
+            <div class="card-body">
+              <div class="badge">AI Prompt Engineering</div>
+              <h3>AI Prompt Battle</h3>
+              <p>Innovation meets intelligent prompting.</p>
+              <a class="btn btn-ghost" href="events/ai-prompt-battle.html"
                 >View Details</a
               >
             </div>

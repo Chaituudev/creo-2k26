@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const revealTargets = document.querySelectorAll("[data-reveal]");
   const filterButtons = document.querySelectorAll(".filter-btn");
   const eventCards = document.querySelectorAll("[data-category]");
+  const scrollLinks = document.querySelectorAll("[data-scroll]");
 
   // Reveal animations using Intersection Observer
   revealTargets.forEach((el) => el.classList.add("reveal"));
@@ -37,6 +38,22 @@ document.addEventListener("DOMContentLoaded", () => {
           const show = filter === "all" || category === filter;
           card.style.display = show ? "flex" : "none";
         });
+      });
+    });
+  }
+
+  // Smooth scroll for in-page register buttons
+  if (scrollLinks.length) {
+    scrollLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const targetId = link.getAttribute("href");
+        if (!targetId || !targetId.startsWith("#")) return;
+
+        const target = document.querySelector(targetId);
+        if (!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
   }
