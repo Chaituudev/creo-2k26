@@ -522,6 +522,55 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
 }
+/* Ensure these variables are at the top of your style.css as provided */
+:root {
+  --bg-primary: #000000;
+  --gold-primary: #d4af37;
+  --gold-highlight: #f5d76e;
+  --gold-shadow: rgba(212, 175, 55, 0.25);
+  --glass-bg: rgba(12, 12, 12, 0.88);
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --primary-rgb: 212, 175, 55;
+}
+/* --- THEME GRID BACKGROUND --- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Fix for Filter display logic */
+.event-card {
+    display: flex;
+}
+
+/* Full width buttons inside cards */
+.btn.full {
+    width: 100%;
+}
+
+/* Add the Blueprint Grid to the Body as a theme background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Event Card Display Fix */
+.event-card {
+    display: flex;
+    flex-direction: column;
+}
 
 .info-card,
 .category-card,
@@ -994,3 +1043,41 @@ section#register {
     align-items: flex-start;
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  background: none

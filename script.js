@@ -1,11 +1,46 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  /* ===============================
+     1️⃣ FIRST COUNTDOWN (Merged)
+  =============================== */
+
+  const countdown = () => {
+    const targetDate = new Date("March 7, 2026 09:30:00").getTime();
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const dayEl = document.querySelector('[data-unit="days"]');
+    const hourEl = document.querySelector('[data-unit="hours"]');
+    const minEl = document.querySelector('[data-unit="minutes"]');
+    const secEl = document.querySelector('[data-unit="seconds"]');
+
+    if (dayEl) dayEl.innerText = d < 10 ? '0' + d : d;
+    if (hourEl) hourEl.innerText = h < 10 ? '0' + h : h;
+    if (minEl) minEl.innerText = m < 10 ? '0' + m : m;
+    if (secEl) secEl.innerText = s < 10 ? '0' + s : s;
+  };
+
+  countdown();
+  setInterval(countdown, 1000);
+
+
+  /* ===============================
+     2️⃣ EXISTING LOGIC (UNCHANGED)
+  =============================== */
+
   const revealTargets = document.querySelectorAll("[data-reveal]");
   const filterButtons = document.querySelectorAll(".filter-btn");
   const eventCards = document.querySelectorAll("[data-category]");
   const scrollLinks = document.querySelectorAll("[data-scroll]");
   const countdownEl = document.querySelector("#countdown");
+  const sectionDividers = document.querySelectorAll(".section-divider");
 
-  // Reveal animations using Intersection Observer
+  // Reveal animations
   revealTargets.forEach((el) => el.classList.add("reveal"));
 
   const observer = new IntersectionObserver(
@@ -20,12 +55,12 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       threshold: 0.16,
       rootMargin: "0px 0px -10% 0px",
-    },
+    }
   );
 
   revealTargets.forEach((el) => observer.observe(el));
 
-  // Category filters on events page
+  // Category filters
   if (filterButtons.length && eventCards.length) {
     filterButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -39,11 +74,19 @@ document.addEventListener("DOMContentLoaded", () => {
           const show = filter === "all" || category === filter;
           card.style.display = show ? "flex" : "none";
         });
+
+        sectionDividers.forEach((divider) => {
+          if (filter === "all") {
+            divider.style.display = "block";
+          } else {
+            divider.style.display = "none";
+          }
+        });
       });
     });
   }
 
-  // Smooth scroll for in-page register buttons
+  // Smooth scroll
   if (scrollLinks.length) {
     scrollLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
@@ -59,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Countdown timer for the main hero
+  // Existing countdown (UNCHANGED)
   if (countdownEl) {
     const targetTime = new Date("2026-03-07T09:30:00+05:30").getTime();
     const unitMap = {
@@ -91,4 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCountdown();
     setInterval(updateCountdown, 1000);
   }
+
 });
+
