@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ----- BLACK / NEON BLUE THEME (preserved) ----- */
+    /* ----- BLACK / NEON BLUE THEME (enhanced with event template styling) ----- */
     * {
       margin: 0;
       padding: 0;
@@ -43,7 +43,7 @@
       letter-spacing: -0.02em;
     }
     h1 { font-size: clamp(2.2rem, 10vw, 5.2rem); font-weight: 700; line-height: 1.1; }
-    h2 { font-size: clamp(1.8rem, 6vw, 3.2rem); }
+    h2 { font-size: clamp(1.8rem, 6vw, 3.2rem); margin-bottom: 1rem; }
 
     .eyebrow {
       text-transform: uppercase; letter-spacing: 0.3em; font-weight: 600; font-size: clamp(0.7rem, 2vw, 0.8rem);
@@ -53,7 +53,7 @@
     }
     .lede, .section-lede { font-size: clamp(1rem, 3.5vw, 1.35rem); color: var(--text-secondary); max-width: 60ch; }
 
-    /* ----- RESPONSIVE NAVBAR ----- */
+    /* ----- RESPONSIVE NAVBAR (enhanced) ----- */
     .navbar {
       background: rgba(10, 12, 15, 0.7);
       backdrop-filter: blur(16px);
@@ -102,9 +102,9 @@
     }
     .btn-ghost { background: transparent; color: var(--accent); border-color: var(--accent); box-shadow: none; }
     .btn-ghost:hover { background: rgba(0, 224, 255, 0.1); border-color: var(--accent); color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
-    .btn-ghost.full { width: 100%; text-align: center; margin-top: 1rem; white-space: normal; }
+    .btn-ghost.full, .btn.full { width: 100%; text-align: center; margin-top: 1rem; white-space: normal; }
 
-    /* ----- RESPONSIVE HERO ----- */
+    /* ----- RESPONSIVE HERO (enhanced) ----- */
     .hero-sub { padding: 2rem 0 2rem; }
     .hero-grid {
       display: grid;
@@ -119,7 +119,7 @@
       .hero-grid { grid-template-columns: 1fr 0.8fr; } 
     }
 
-    .pill-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0; }
     .pill {
       background: #1a1f2a; border: 1px solid var(--accent); border-radius: 60px; padding: 0.4rem 1.2rem;
       font-weight: 600; font-size: clamp(0.75rem, 2vw, 0.9rem); color: var(--accent); 
@@ -131,7 +131,70 @@
       border: 1px solid var(--accent); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow);
       width: 100%; max-width: 380px; margin: 0 auto;
     }
-    .glass-card .label { color: var(--accent); font-weight: 600; letter-spacing: 1px; font-size: 0.8rem; }
+    .glass-card .label { color: var(--accent); font-weight: 600; letter-spacing: 1px; font-size: 0.8rem; margin-bottom: 0.8rem; }
+
+    /* ----- LISTS (from event template) ----- */
+    .list {
+      list-style: none; padding: 0;
+    }
+    .list li {
+      padding: 0.5rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);
+      display: flex; gap: 0.5rem;
+    }
+    .list li::before {
+      content: "▹"; color: var(--accent); font-weight: 700;
+    }
+    .list.compact li { padding: 0.3rem 0; font-size: 0.95rem; border-bottom: none; }
+
+    /* ----- SECTIONS (from event template) ----- */
+    .section { padding: clamp(2.5rem, 8vw, 5rem) 0; }
+    .muted { background: rgba(0,0,0,0.2); }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    @media (min-width: 600px) {
+      .two-col { grid-template-columns: 1fr 1fr; }
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .info-card {
+      background: var(--surface); padding: 1.8rem; border-radius: var(--radius-sm); 
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+    }
+    .info-card h3 { color: var(--accent); margin-bottom: 1rem; }
+    .info-card p { color: var(--text-secondary); }
+
+    /* ----- REGISTER GRID (from event template) ----- */
+    .register-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      background: var(--surface); padding: 2rem; border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    @media (min-width: 700px) {
+      .register-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .register-card {
+      background: var(--glass-bg); padding: 1.8rem; border-radius: var(--radius-sm);
+      border: 1px solid var(--accent); backdrop-filter: blur(8px);
+    }
+    .register-meta {
+      list-style: none; margin: 1.5rem 0; display: grid; gap: 0.8rem;
+    }
+    .register-meta li {
+      display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.4rem; color: var(--text-secondary);
+    }
+    .register-meta li strong { color: var(--accent); }
 
     /* ----- RESPONSIVE EVENT GRID (cards adapt) ----- */
     .event-grid {
@@ -141,7 +204,7 @@
       margin-top: 1rem;
     }
     @media (max-width: 480px) {
-      .event-grid { grid-template-columns: 1fr; } /* single column on very small */
+      .event-grid { grid-template-columns: 1fr; }
     }
     .event-card {
       clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
@@ -211,21 +274,118 @@
       box-shadow: 0 0 10px var(--accent);
     }
 
-    /* ----- RESPONSIVE FOOTER ----- */
-    .footer {
-      background: #0a0c0f; border-top: 1px solid var(--border); padding: 2rem 0 1.2rem; margin-top: 3rem;
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
-    .footer-grid {
-      display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      background: var(--surface);
     }
-    @media (min-width: 500px) { 
-      .footer-grid { grid-template-columns: 1fr 1fr; align-items: start; } 
+
+    .social-links a img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: var(--transition);
     }
-    .footer .brand { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
-    .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
-    .footer-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: var(--transition); font-size: 0.9rem; }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-note { margin-top: 2rem; font-size: 0.75rem; color: var(--text-secondary); text-align: center; }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .social-links a:hover img {
+      filter: brightness(1.2);
+      transform: scale(1.1);
+    }
+
+    /* ----- NEW PREMIUM FOOTER ----- */
+    .footer-main { background: #07090c; border-top: 1px solid var(--border); padding: 5rem 0 2rem; color: #fff; }
+    .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; margin-bottom: 4rem; }
+    .footer-col h4 { color: var(--text-primary); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 1.8rem; border-left: 3px solid var(--accent); padding-left: 12px; }
+    .footer-col p { font-size: 0.95rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem; }
+    
+    .social-links { display: flex; gap: 1rem; }
+    .social-links a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--border); border-radius: 50%; color: var(--accent); transition: var(--transition); text-decoration: none; }
+    .social-links a:hover { background: var(--accent); color: var(--bg); transform: translateY(-5px); box-shadow: 0 0 15px var(--accent-glow); }
+
+    .inst-name { color: var(--accent); font-weight: 700; margin-bottom: 8px; display: block; text-decoration: none; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: var(--text-secondary); text-decoration: none; transition: var(--transition); }
+    .footer-links a:hover { color: var(--accent); padding-left: 5px; }
+
+    .contact-item { display: flex; gap: 12px; margin-bottom: 15px; color: var(--text-secondary); font-size: 0.9rem; }
+    .contact-item i { color: var(--accent); margin-top: 4px; }
+    
+    .view-map-btn { display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 224, 255, 0.05); border: 1px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 4px; font-size: 0.85rem; text-decoration: none; transition: var(--transition); margin-top: 10px; }
+    .view-map-btn:hover { background: var(--accent); color: var(--bg); }
+
+    .organizer-logos { display: flex; gap: 15px; margin-top: 20px; }
+    .organizer-logos img { height: 50px; background: #fff; border-radius: 4px; padding: 4px; }
+
+    .support-card { background: #0d1117; border-left: 4px solid var(--accent); padding: 20px; margin-top: 30px; border-radius: 4px; display: flex; align-items: center; gap: 15px; }
+    .support-card i { font-size: 1.5rem; color: var(--accent); }
+    .support-card .details span { display: block; font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+    .support-card .details strong { font-size: 1.1rem; color: #fff; display: block; margin: 2px 0; }
+    .support-card .details p { margin: 0; color: var(--text-secondary); }
+
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; }
+    .footer-bottom p { font-size: 0.85rem; opacity: 0.6; }
+
+    /* ----- FOOTER SOCIALS (RE-ALIGNED) ----- */
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      background: var(--surface);
+    }
+
+    .social-links a img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .social-links a:hover img {
+      filter: brightness(1.2);
+      transform: scale(1.1);
+    }
 
     /* reveal animation */
     [data-reveal] { opacity: 0; transform: translateY(20px); animation: fadeUp 0.7s forwards; }
@@ -238,10 +398,16 @@
       #nav-right .btn { width: 100%; }
       .hero-grid { gap: 1.5rem; }
       .glass-card { max-width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 350px) {
       .pill { white-space: normal; text-align: center; }
       .section-divider h2 { white-space: normal; font-size: 1.1rem; }
+    }
+
+    /* section headers from event template */
+    .section-header {
+      margin-bottom: 1rem;
     }
   </style>
 </head>
@@ -253,7 +419,7 @@
       </div>
       <nav class="nav-links">
         <a href="index.html">Home</a>
-        <a href="#categories">Categories</a>
+        <a href="index.html#about">Categories</a>
         <a class="active" href="#">Events</a>
       </nav>
       <div id="nav-right">
@@ -267,7 +433,7 @@
     <section class="hero hero-sub" id="top">
       <div class="container hero-grid">
         <div class="hero-copy" data-reveal>
-          <span class="eyebrow">State Level Fest organized by AITRC VITA • 7TH MARCH 2026</span>
+          <span class="eyebrow">State Level Fest organized by AITRC VITA • 18TH MARCH 2026</span>
           <h1>The Technical <span style="color: var(--accent);">Arena</span></h1>
           <p class="lede">
             Explore 14 specialized engineering and polytechnic challenges. Split across two high-octane tracks, find your arena and claim your share of the <strong>₹ 1 Lakh prize pool</strong>.
@@ -292,6 +458,34 @@
       </div>
     </section>
 
+    <!-- Quick Stats Section (from event template) -->
+    <section class="section muted" id="stats" data-reveal>
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Festival Overview</span>
+          <h2>Battle Stats</h2>
+        </div>
+        <div class="card-grid">
+          <article class="info-card">
+            <h3>Total Events</h3>
+            <p>14 technical challenges across engineering & polytechnic</p>
+          </article>
+          <article class="info-card">
+            <h3>Prize Pool</h3>
+            <p>₹1 Lakh+ in cash prizes and goodies</p>
+          </article>
+          <article class="info-card">
+            <h3>Participants</h3>
+            <p>500+ expected from across the state</p>
+          </article>
+          <article class="info-card">
+            <h3>Categories</h3>
+            <p>Coding, Robotics, Design, Hardware & more</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="grid">
       <!-- filter bar completely removed (as requested) -->
 
@@ -311,7 +505,7 @@
             <div class="badge">Design</div>
             <h3>Pixel Fusion</h3>
             <p>The ultimate UI/UX and digital graphics battle.</p>
-            <a class="btn btn-ghost full" href="events/pixelfusion.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/pixelfusion.html">View Details</a>
           </div>
         </article>
 
@@ -323,11 +517,11 @@
             <div class="badge">Robotics</div>
             <h3>Electro Challenge</h3>
             <p>Hardware precision and robotic dexterity trial.</p>
-            <a class="btn btn-ghost full" href="events/electro-challenge.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/electro-challenge.html">View Details</a>
           </div>
         </article>
 
-        <article class="event-card" data-category="Design">
+        <article class="event-card" data-category="Mechanical">
           <div class="card-visual">
             <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=800&auto=format&fit=crop" alt="CAD Master" loading="lazy">
           </div>
@@ -335,7 +529,7 @@
             <div class="badge">Mechanical</div>
             <h3>CAD Master</h3>
             <p>Industrial 3D modeling and assembly challenge.</p>
-            <a class="btn btn-ghost full" href="events/cad-master-mech-degree.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/cad-master-mech-degree.html">View Details</a>
           </div>
         </article>
 
@@ -347,7 +541,7 @@
             <div class="badge">AI Zone</div>
             <h3>AI Prompt Battle Zone</h3>
             <p>Master the logic of Generative AI prompting.</p>
-            <a class="btn btn-ghost full" href="events/ai-prompt-battle.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/ai-prompt-battle.html">View Details</a>
           </div>
         </article>
 
@@ -359,7 +553,7 @@
             <div class="badge">Presentation</div>
             <h3>Vision Board</h3>
             <p>Technical poster presentation for innovators.</p>
-            <a class="btn btn-ghost full" href="events/vision-board.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/vision-board.html">View Details</a>
           </div>
         </article>
 
@@ -371,7 +565,7 @@
             <div class="badge">Robo Race</div>
             <h3>Robo Chrono Challenge</h3>
             <p>Student-developed robo car racing event.</p>
-            <a class="btn btn-ghost full" href="events/robochrono.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/robochrono.html">View Details</a>
           </div>
         </article>
 
@@ -383,7 +577,7 @@
             <div class="badge">Urban Tech</div>
             <h3>City-Craft</h3>
             <p>Design and model the smart cities of 2050.</p>
-            <a class="btn btn-ghost full" href="events/city-craft.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/city-craft.html">View Details</a>
           </div>
         </article>
 
@@ -395,13 +589,13 @@
 
         <article class="event-card" data-category="Coding">
           <div class="card-visual">
-            <img src="https://share.google/P9wzNn8VWVNrQcmOz" alt="AptiCode" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=800&auto=format&fit=crop" alt="AptiCode" loading="lazy">
           </div>
           <div class="card-body">
             <div class="badge">Coding</div>
             <h3>AptiCode Challenge</h3>
             <p>Rapid algorithm logic and quantitative coding.</p>
-            <a class="btn btn-ghost full" href="events/apticode-challenge-2k26.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/apticode-challenge-2k26.html">View Details</a>
           </div>
         </article>
 
@@ -413,19 +607,19 @@
             <div class="badge">Visuals</div>
             <h3>Electro-Vista</h3>
             <p>Electronic poster presentation and design.</p>
-            <a class="btn btn-ghost full" href="events/electro-vista.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/electro-vista.html">View Details</a>
           </div>
         </article>
 
-        <article class="event-card" data-category="Design">
+        <article class="event-card" data-category="Mechanical">
           <div class="card-visual">
-            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop" alt="CAD Master Poly" loading="lazy">
+            <img src="https://roboticsbiz.com/wp-content/uploads/2022/05/CAD.jpg" alt="CAD Master Poly" loading="lazy">
           </div>
           <div class="card-body">
             <div class="badge">Mechanical</div>
-            <h3>CAD Master</h3>
+            <h3>CAD Master (Diploma)</h3>
             <p>Precision 2D and 3D industrial drafting.</p>
-            <a class="btn btn-ghost full" href="events/cad-master-mech-diploma.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/cad-master-mech-diploma.html">View Details</a>
           </div>
         </article>
 
@@ -437,19 +631,19 @@
             <div class="badge">Fusion</div>
             <h3>Multi-Code Fusion</h3>
             <p>Versatility across multiple programming languages.</p>
-            <a class="btn btn-ghost full" href="events/multi-code-fusion.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/multi-code-fusion.html">View Details</a>
           </div>
         </article>
 
         <article class="event-card" data-category="Campus">
           <div class="card-visual">
-            <img src="https://images.unsplash.com/photo-1513001900722-370f803f498d?q=80&w=800&auto=format&fit=crop" alt="Treasure Hunt" loading="lazy">
+            <img src="./img/hunt.jpg"Treasure Hunt" loading="lazy">
           </div>
           <div class="card-body">
             <div class="badge">Campus</div>
             <h3>Treasure Hunt</h3>
             <p>Strategy and riddles across the campus terrain.</p>
-            <a class="btn btn-ghost full" href="events/treasure-hunt-2k26.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/treasure-hunt-2k26.html">View Details</a>
           </div>
         </article>
 
@@ -461,40 +655,97 @@
             <div class="badge">Hardware</div>
             <h3>Techthronix</h3>
             <p>Debugging and optimizing hardware circuitry.</p>
-            <a class="btn btn-ghost full" href="events/techthronix.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/techthronix.html">View Details</a>
           </div>
         </article>
 
         <article class="event-card" data-category="Survey">
           <div class="card-visual">
-            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop" alt="Survey Master" loading="lazy">
+            <img src="./img/civil.jpg" alt="Survey Master" loading="lazy">
           </div>
           <div class="card-body">
             <div class="badge">Civil</div>
             <h3>Survey Master</h3>
             <p>Theodolite and leveling precision challenge.</p>
-            <a class="btn btn-ghost full" href="events/survey-master.html">View Details</a>
+            <a class="btn btn-ghost full" href="./events/survey-master.html">View Details</a>
           </div>
         </article>
-
       </div> <!-- event-grid -->
     </section>
+
+    <!-- Registration Info Section (from event template) -->
+    <!-- <section class="section" id="register" data-reveal>
+      <div class="container register-grid">
+        <div class="register-info">
+          <span class="eyebrow">Registration</span>
+          <h2>Lock your slot</h2>
+          <p class="section-lede">Limited seats per event – register early to avoid disappointment</p>
+          <ul class="list compact">
+            <li>Registration closes 5 March 2026.</li>
+            <li>On‑spot payment via UPI/card available.</li>
+            <li>Reporting time: 9:30 AM sharp at respective venues.</li>
+            <li>Team events require all members to register together.</li>
+          </ul>
+        </div>
+        <div class="register-card">
+          <p class="label" style="color: var(--accent);">Ready to compete?</p>
+          <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+            Select your event from the grid above and click "View Details" for event-specific registration.
+          </p>
+          <ul class="register-meta">
+            <li><span>Total Events</span><strong>14</strong></li>
+            <li><span>Prize Pool</span><strong>₹1 Lakh+</strong></li>
+            <li><span>Last Date</span><strong>5 March 2026</strong></li>
+            <li><span>Fest Date</span><strong>7 March 2026</strong></li>
+            <li><span>Venue</span><strong>AITRC Vita</strong></li>
+          </ul>
+          <a class="btn full" href="#grid" data-scroll>Browse Events</a>
+        </div>
+      </div>
+    </section> -->
   </main>
+    <footer class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>CREO 2K26</h4>
+            <p>A technical and cultural battlefield for the brilliant minds of AITRC Vita. Forge your path in a festival of innovation.</p>
+            <div class="social-links">
+              <a href="https://www.instagram.com/aitrcvita" target="_blank"><img src="../img/instagram.jpg" alt="IG"></a>
+              <a href="https://www.linkedin.com/in/adarsh-institute-of-technology-vita-64115a141/" target="_blank"><img src="../img/linkedin.avif" alt="IN"></a>
+              <a href="https://www.youtube.com/@aitrcvita" target="_blank"><img src="../img/youtube.avif" alt="YT"></a>
+              <a href="https://www.facebook.com/AITRC/" target="_blank"><img src="../img/facebook.avif" alt="FB"></a>
+            </div>
+          </div>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="brand">CREOWORLD 2K26</div>
-        <p style="color: var(--text-secondary); font-size: 0.9rem;">Adarsh Institute of Technology & Research Centre, Vita.</p>
-      </div>
-      <div class="footer-links">
-        <a href="tel:9307257521">SUPPORT: 9307257521</a>
-        <a href="https://www.aitrcvita.edu.in">WWW.AITRCVITA.EDU.IN</a>
-      </div>
-    </div>
-    <p class="footer-note">© 2026 CREO 2K26. Karve MIDC, Vita. All rights reserved.</p>
-  </footer>
+          <div class="footer-col">
+            <h4>Institution</h4>
+            <a href="https://www.aitrcvita.edu.in/" class="inst-name"><i class="fas fa-globe"></i> AITRC, Vita</a>
+            <p>Adarsh Institute of Technology and Research Center, Vita. Empowering students with quality technical education.</p>
+          </div>
 
+          <div class="footer-col">
+            <h4>Contact Us</h4>
+            <div class="contact-item"><i class="fas fa-envelope"></i><span>contact@creo.tech</span></div>
+            <div class="contact-item"><i class="fas fa-location-dot"></i><span>AITRC Vita, Sangli road, Vita, MH.</span></div>
+            <a href="https://maps.app.goo.gl/2hbUMzWp31BV2LweA" class="view-map-btn"><i class="fas fa-map-marker-alt"></i> View on Map</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>Organizers</h4>
+            <p>Proudly organized and managed by CSE & CM AITRC, Vita.</p>
+            <div class="organizer-logos">
+              <img src="../img/cse.jpeg" alt="CSE">
+              <img src="../img/cm.jpeg" alt="CM">
+              <img src="../img/headerlogo.jpeg" alt="Logo">
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 CREO 2K26. All rights reserved. Designed for innovators.</p>
+        </div>
+      </div>
+    </footer>
   <!-- smooth anchor script (lightweight) -->
   <script>
     (function() {

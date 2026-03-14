@@ -1,382 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>CREO 2K26 · Event Template (black/neon theme)</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    /* ----- BLACK / NEON BLUE THEME (exactly as before) ----- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    :root {
-      --bg: #0a0c0f;
-      --surface: #11151c;
-      --text-primary: #ffffff;
-      --text-secondary: #b0b8c5;
-      --accent: #00e0ff;
-      --accent-glow: rgba(0, 224, 255, 0.25);
-      --border: #2a2f3a;
-      --shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0,224,255,0.1);
-      --radius: 1.5rem;
-      --radius-sm: 1rem;
-      --transition: all 0.2s ease;
-      --container: min(90%, 1280px);
-      --ease-premium: cubic-bezier(0.4, 0, 0.2, 1);
-      --glass-bg: rgba(17, 21, 28, 0.9);
-    }
-    body {
-      font-family: 'Manrope', sans-serif;
-      background-color: var(--bg);
-      color: var(--text-primary);
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
-    h1, h2, h3, h4 {
-      color: var(--text-primary);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-    h1 { font-size: clamp(2.4rem, 8vw, 4.8rem); font-weight: 700; line-height: 1.1; }
-    h2 { font-size: clamp(1.8rem, 6vw, 3rem); margin-bottom: 1rem; }
-
-    .eyebrow {
-      text-transform: uppercase; letter-spacing: 0.3em; font-weight: 600; font-size: 0.8rem;
-      color: var(--accent); background: rgba(0, 224, 255, 0.1); display: inline-block;
-      padding: 0.4rem 1rem; border-radius: 40px; margin-bottom: 1.2rem; border: 1px solid rgba(0, 224, 255, 0.3);
-      backdrop-filter: blur(4px);
-    }
-    .lede, .section-lede { font-size: clamp(1.1rem, 3.5vw, 1.35rem); color: var(--text-secondary); max-width: 60ch; }
-
-    /* ----- NAVBAR (fully responsive) ----- */
-    .navbar {
-      background: rgba(10, 12, 15, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      padding: 0.6rem 0;
-    }
-    .container {
-      width: var(--container);
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .nav-inner {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CREO 2K26 | Techthronix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Added FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      /* ----- THEME COLORS ----- */
+      :root {
+        --bg: #0a0c0f;
+        --surface: #11151c;
+        --text-primary: #ffffff;
+        --text-secondary: #b0b8c5;
+        --accent: #00e0ff;
+        --accent-glow: rgba(0, 224, 255, 0.25);
+        --border: #2a2f3a;
+        --shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.8);
+        --radius: 1.5rem;
+        --transition: all 0.3s ease;
+      }
+    /* ----- FOOTER SOCIALS (RE-ALIGNED) ----- */
+    .social-links {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.8rem 1.2rem;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
-    .brand {
-      font-weight: 800; font-size: clamp(1.2rem, 4vw, 1.6rem); color: var(--accent); 
-      letter-spacing: 1px; text-shadow: 0 0 8px var(--accent); white-space: nowrap;
-    }
-    .nav-links { 
-      display: flex; 
-      gap: clamp(1.2rem, 3vw, 2.5rem); 
-      flex-wrap: wrap; 
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .nav-links a { 
-      text-decoration: none; font-weight: 600; color: var(--text-primary); 
-      transition: var(--transition); font-size: clamp(0.9rem, 2.5vw, 1rem); 
-    }
-    .nav-links a:hover { color: var(--accent); text-shadow: 0 0 8px var(--accent); }
-
-    .btn {
-      display: inline-block; background: var(--accent); color: #0a0c0f; font-weight: 700;
-      padding: 0.6rem 1.6rem; border-radius: 60px; text-decoration: none; font-size: clamp(0.85rem, 2.5vw, 1rem);
-      border: 2px solid var(--accent); transition: var(--transition); 
-      box-shadow: 0 0 15px var(--accent-glow), 0 4px 10px rgba(0,0,0,0.4);
-      white-space: nowrap;
-    }
-    .btn-ghost { background: transparent; color: var(--accent); border-color: var(--accent); box-shadow: none; }
-    .btn-ghost:hover { background: rgba(0, 224, 255, 0.1); border-color: var(--accent); color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
-    .btn.full { width: 100%; text-align: center; white-space: normal; }
-
-    /* ----- HERO (responsive) ----- */
-    .hero-sub { padding: 2.5rem 0 2rem; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    @media (min-width: 700px) { 
-      .hero-grid { grid-template-columns: 1fr 0.9fr; } 
+      transition: var(--transition);
+      background: var(--surface);
     }
 
-    .pill-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0; }
-    .pill {
-      background: #1a1f2a; border: 1px solid var(--accent); border-radius: 60px; padding: 0.4rem 1.2rem;
-      font-weight: 600; font-size: clamp(0.75rem, 2vw, 0.9rem); color: var(--accent); 
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5); white-space: nowrap;
+    .social-links a img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: var(--transition);
     }
 
-    .glass-card {
-      background: var(--glass-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--accent); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow);
-      width: 100%; max-width: 380px; margin: 0 auto;
-    }
-    .glass-card .label { color: var(--accent); font-weight: 600; letter-spacing: 1px; margin-bottom: 0.8rem; }
-
-    /* lists */
-    .list {
-      list-style: none; padding: 0;
-    }
-    .list li {
-      padding: 0.5rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);
-      display: flex; gap: 0.5rem;
-    }
-    .list li::before {
-      content: "▹"; color: var(--accent); font-weight: 700;
-    }
-    .list.compact li { padding: 0.3rem 0; font-size: 0.95rem; }
-
-    /* sections */
-    .section { padding: clamp(2.5rem, 8vw, 5rem) 0; }
-    .muted { background: rgba(0,0,0,0.2); }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-    @media (min-width: 600px) {
-      .two-col { grid-template-columns: 1fr 1fr; }
+    .social-links a:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
     }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
+    .social-links a:hover img {
+      filter: brightness(1.2);
+      transform: scale(1.1);
     }
-    .info-card {
-      background: var(--surface); padding: 1.8rem; border-radius: var(--radius-sm); 
-      border: 1px solid var(--border); box-shadow: var(--shadow);
-    }
-    .info-card h3 { color: var(--accent); margin-bottom: 1rem; }
-    .info-card p { color: var(--text-secondary); }
 
-    /* register grid */
-    .register-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      background: var(--surface); padding: 2rem; border-radius: var(--radius);
-      border: 1px solid var(--border);
-    }
-    @media (min-width: 700px) {
-      .register-grid { grid-template-columns: 1fr 1fr; }
-    }
-    .register-card {
-      background: var(--glass-bg); padding: 1.8rem; border-radius: var(--radius-sm);
-      border: 1px solid var(--accent); backdrop-filter: blur(8px);
-    }
-    .register-meta {
-      list-style: none; margin: 1.5rem 0; display: grid; gap: 0.8rem;
-    }
-    .register-meta li {
-      display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border);
-      padding-bottom: 0.4rem; color: var(--text-secondary);
-    }
-    .register-meta li strong { color: var(--accent); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* footer */
-    .footer {
-      background: #0a0c0f; border-top: 1px solid var(--border); padding: 2.5rem 0 1.5rem; margin-top: 2rem;
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: 1fr; gap: 2rem;
-    }
-    @media (min-width: 600px) { 
-      .footer-grid { grid-template-columns: repeat(3, 1fr); align-items: start; } 
-    }
-    .footer .brand { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
-    .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
-    .footer-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: var(--transition); }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-note { margin-top: 2rem; font-size: 0.8rem; color: var(--text-secondary); text-align: center; }
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: var(--bg);
+        color: var(--text-primary);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
 
-    /* reveal */
-    [data-reveal] { opacity: 0; transform: translateY(20px); animation: fadeUp 0.7s forwards; }
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+      .container { width: min(90%, 1200px); margin: 0 auto; }
 
-    /* responsive tweaks */
-    @media (max-width: 480px) {
-      .nav-inner { flex-direction: column; align-items: stretch; }
-      .nav-links { justify-content: center; }
-      .navbar .btn { width: 100%; text-align: center; }
-      .glass-card { max-width: 100%; }
-    }
-  </style>
-</head>
-<body>
-  <header class="navbar">
-    <div class="container nav-inner">
-      <div class="brand">CREO 2K26</div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="events.html">Events</a>
-      </nav>
-      <a class="btn btn-ghost" href="#register" data-scroll>Register</a>
-    </div>
-  </header>
+      /* ----- NAVBAR ----- */
+      .navbar {
+        background: rgba(10, 12, 15, 0.8);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+      .brand { font-weight: 800; color: var(--accent); font-size: 1.5rem; letter-spacing: -1px; }
+      .nav-links a { 
+        text-decoration: none; color: var(--text-secondary); margin-right: 1.5rem; 
+        font-weight: 600; transition: var(--transition);
+      }
+      .nav-links a:hover { color: var(--accent); }
 
-  <main>
-    <!-- HERO -->
-    <section class="hero hero-sub" id="top">
-      <div class="container hero-grid">
-        <div class="hero-copy" data-reveal>
-          <span class="eyebrow">Category: Technical</span>
-          <h1>Algo Arena</h1>
-          <p class="lede">Solve, optimize, and conquer the ultimate coding battle.</p>
-          <div class="pill-row">
-            <span class="pill">Department: CSE & AIML</span>
-            <span class="pill">Entries: 60 · Fee: ₹150</span>
+      /* ----- HERO ----- */
+      .hero-sub { padding: 5rem 0; }
+      .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+      
+      .eyebrow {
+        text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; font-size: 0.75rem;
+        color: var(--accent); background: rgba(0, 224, 255, 0.1); display: inline-block;
+        padding: 0.4rem 1rem; border-radius: 40px; margin-bottom: 1.2rem; border: 1px solid rgba(0, 224, 255, 0.3);
+      }
+      
+      h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 1rem; line-height: 1.1; }
+      .lede { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; }
+
+      /* ----- BUTTONS ----- */
+      .btn {
+        display: inline-block; background: var(--accent); color: #0a0c0f; font-weight: 700;
+        padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; border: 2px solid var(--accent);
+        transition: var(--transition); box-shadow: 0 0 15px var(--accent-glow);
+      }
+      .btn:hover { transform: scale(1.05); box-shadow: 0 0 25px var(--accent); }
+      .btn-ghost { background: transparent; color: var(--accent); border-color: var(--accent); }
+      .btn-ghost:hover { background: rgba(0, 224, 255, 0.1); }
+      .full { width: 100%; text-align: center; }
+
+      /* ----- PILLS & CARDS ----- */
+      .pill-row { display: flex; gap: 0.8rem; margin-bottom: 2rem; flex-wrap: wrap; }
+      .pill { 
+        border: 1px solid var(--border); padding: 0.4rem 1rem; border-radius: 50px; 
+        font-size: 0.85rem; background: var(--surface); color: var(--text-secondary);
+      }
+
+      .glass-card, .info-card, .register-card {
+        background: var(--surface); padding: 2rem; border-radius: var(--radius);
+        border: 1px solid var(--border); box-shadow: var(--shadow);
+      }
+      .info-card:hover { border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow); }
+
+      .label { color: var(--accent); text-transform: uppercase; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.5rem; display: block; }
+      .list { list-style: none; margin: 1rem 0; }
+      .list li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; color: var(--text-secondary); }
+      .list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+
+      /* ----- SECTIONS ----- */
+      .section { padding: 5rem 0; }
+      .muted { background: #0d1016; }
+      .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+      .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+      
+      /* ----- REGISTER TABLE ----- */
+      .register-grid { display: grid; grid-template-columns: 1fr 400px; gap: 4rem; }
+      .register-meta { list-style: none; margin: 2rem 0; }
+      .register-meta li { 
+        display: flex; justify-content: space-between; padding: 0.8rem 0; 
+        border-bottom: 1px solid var(--border); gap: 1rem;
+      }
+      .register-meta span { color: var(--text-secondary); white-space: nowrap; }
+      .register-meta strong { color: var(--accent); text-align: right; }
+
+      /* ----- NEW PREMIUM FOOTER ----- */
+      .footer-main { background: #07090c; border-top: 1px solid var(--border); padding: 5rem 0 2rem; color: #fff; }
+      .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; margin-bottom: 4rem; }
+      .footer-col h4 { color: var(--text-primary); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 1.8rem; border-left: 3px solid var(--accent); padding-left: 12px; }
+      .footer-col p { font-size: 0.95rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem; }
+      
+      .social-links { display: flex; gap: 1rem; }
+      .social-links a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--border); border-radius: 50%; color: var(--accent); transition: var(--transition); text-decoration: none; }
+      .social-links a:hover { background: var(--accent); color: var(--bg); transform: translateY(-5px); box-shadow: 0 0 15px var(--accent-glow); }
+
+      .inst-name { color: var(--accent); font-weight: 700; margin-bottom: 8px; display: block; text-decoration: none; }
+      .footer-links { list-style: none; }
+      .footer-links li { margin-bottom: 10px; }
+      .footer-links a { color: var(--text-secondary); text-decoration: none; transition: var(--transition); }
+      .footer-links a:hover { color: var(--accent); padding-left: 5px; }
+
+      .contact-item { display: flex; gap: 12px; margin-bottom: 15px; color: var(--text-secondary); font-size: 0.9rem; }
+      .contact-item i { color: var(--accent); margin-top: 4px; }
+      
+      .view-map-btn { display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 224, 255, 0.05); border: 1px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 4px; font-size: 0.85rem; text-decoration: none; transition: var(--transition); margin-top: 10px; }
+      .view-map-btn:hover { background: var(--accent); color: var(--bg); }
+
+      .organizer-logos { display: flex; gap: 15px; margin-top: 20px; }
+      .organizer-logos img { height: 50px; background: #fff; border-radius: 4px; padding: 4px; }
+
+      .support-card { background: #0d1117; border-left: 4px solid var(--accent); padding: 20px; margin-top: 30px; border-radius: 4px; display: flex; align-items: center; gap: 15px; }
+      .support-card i { font-size: 1.5rem; color: var(--accent); }
+      .support-card .details span { display: block; font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+      .support-card .details strong { font-size: 1.1rem; color: #fff; display: block; margin: 2px 0; }
+      .support-card .details p { margin: 0; color: var(--text-secondary); }
+
+      .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; }
+      .footer-bottom p { font-size: 0.85rem; opacity: 0.6; }
+
+      /* Reveal Animation Styles */
+      [data-reveal] { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+      [data-reveal].visible { opacity: 1; transform: translateY(0); }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 768px) {
+        .hero-grid, .two-col, .register-grid, .footer-grid { grid-template-columns: 1fr; }
+        .hero-visual { order: -1; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container nav-inner">
+        <div class="brand">CREO 2K26</div>
+        <nav class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="../events.html">Events</a>
+        </nav>
+        <a class="btn btn-ghost" href="#register">Register</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero hero-sub" id="top">
+        <div class="container hero-grid">
+          <div class="hero-copy" data-reveal>
+            <span class="eyebrow">Category: Circuit Build</span>
+            <h1>Techthronix</h1>
+            <p class="lede">Wired to innovation.</p>
+            <div class="pill-row">
+              <span class="pill">Department: ETC Diploma</span>
+              <span class="pill">Entries: Limited seats · Fee: ₹125/-</span>
+            </div>
+            <a class="btn" href="#register">Register Now</a>
           </div>
-          <a class="btn" href="#register" data-scroll>Register Now</a>
+          <div class="hero-visual" data-reveal>
+            <div class="glass-card">
+              <p class="label">Quick Snapshot</p>
+              <ul class="list compact">
+                <li>Single timed circuit construction/debugging round.</li>
+                <li>Speed and accuracy decide your rank.</li>
+                <li>Details for components shared onsite.</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="hero-visual" data-reveal>
-          <div class="glass-card">
-            <p class="label">Quick Snapshot</p>
+      </section>
+
+      <section class="section" id="structure">
+        <div class="container two-col" data-reveal>
+          <div>
+            <span class="eyebrow">Rounds / Structure</span>
+            <h2>How it runs</h2>
+            <ul class="list">
+              <li>Single timed circuit construction/debugging round.</li>
+            </ul>
+          </div>
+          <div>
+            <span class="eyebrow">Entries & Fee</span>
+            <h2>Slots</h2>
             <ul class="list compact">
-              <li>Three algorithmic challenges</li>
-              <li>Live leaderboard</li>
-              <li>Top 3 get cash prizes</li>
+              <li><strong>Entries:</strong> Limited seats are available</li>
+              <li><strong>Fee:</strong> ₹125/-</li>
             </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ROUNDS & STRUCTURE -->
-    <section class="section" id="structure">
-      <div class="container two-col" data-reveal>
-        <div>
-          <span class="eyebrow">Rounds / Structure</span>
-          <h2>How it runs</h2>
+      <section class="section muted" id="rules" data-reveal>
+        <div class="container">
+          <span class="eyebrow">Rules & Regulations</span>
+          <h2>Play fair</h2>
           <ul class="list">
-            <li>Round 1: MCQ screening (30 min).</li>
-            <li>Round 2: Algorithm design (2 problems, 90 min).</li>
-            <li>Round 3: Optimization challenge (live).</li>
+            <li>Individual or teams of 2.</li>
+            <li>Focus on circuit accuracy and speed.</li>
+            <li>Use only approved components and tools.</li>
+            <li>Follow time limits; judge decisions are final.</li>
           </ul>
         </div>
-        <div>
-          <span class="eyebrow">Entries & Fee</span>
-          <h2>Slots</h2>
-          <ul class="list compact">
-            <li><strong>Entries:</strong> 60 (first come first serve)</li>
-            <li><strong>Fee:</strong> ₹150 per participant</li>
-            <li><strong>Team size:</strong> Individual</li>
+      </section>
+
+      <section class="section" id="coordinators">
+        <div class="container section-header" data-reveal>
+          <span class="eyebrow">Coordinators</span>
+          <h2>Faculty & Students</h2>
+        </div>
+        <div class="container card-grid" data-reveal>
+          <article class="info-card">
+            <h3>Faculty</h3>
+            <p>Ms. T.N. Deshmukh</p>
+            <p class="label">+91 9370410034</p>
+          </article>
+          <article class="info-card">
+            <h3>Students</h3>
+            <p>Tanishka Ghagare</p>
+            <p class="label">+91 7397905105</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="register">
+        <div class="container register-grid" data-reveal>
+          <div class="register-info">
+            <span class="eyebrow">Registration</span>
+            <h2>Lock your slot</h2>
+            <p class="section-lede">Limited entries · ₹125/-</p>
+            <ul class="list compact">
+              <li>Arrive early for setup instructions.</li>
+              <li>Carry your college ID for verification.</li>
+              <li>Reporting time: 9:30 AM at ETC Diploma Lab.</li>
+            </ul>
+          </div>
+          <div class="register-card">
+            <p class="label">Ready?</p>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+              Use the external form to complete registration.
+            </p>
+            <ul class="register-meta">
+              <li><span>Entries</span><strong>Limited seats</strong></li>
+              <li><span>Fee</span><strong>₹125/-</strong></li>
+              <li><span>Department</span><strong>ETC Diploma</strong></li>
+              <li><span>Venue</span><strong>ETC Diploma Lab</strong></li>
+              <li><span>Reporting</span><strong>09:30 AM</strong></li>
+            </ul>
+            <a
+              class="btn full"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeg4p8ex9eQyJqScPfMDPmgndzI-EY8Bqt6yZMCpKCcmPsISg/viewform?usp=dialog"
+              target="_blank"
+              rel="noopener"
+              >Register Now</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div class="footer-col">
+          <h4>CREO 2K26</h4>
+          <p>Where innovation meets legacy — a technical and cultural battlefield for the brilliant minds of AITRC Vita. Forge your path in a festival of innovation.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/aitrcvita" target="_blank">
+              <img src="../img/instagram.jpg" alt="Instagram">
+            </a>
+            <a href="https://www.linkedin.com/in/adarsh-institute-of-technology-vita-64115a141/" target="_blank">
+              <img src="../img/linkedin.avif" alt="LinkedIn">
+            </a>
+            <a href="https://www.youtube.com/@aitrcvita" target="_blank">
+              <img src="../img/youtube.avif" alt="YouTube">
+            </a>
+            <a href="https://www.facebook.com/AITRC/" target="_blank">
+              <img src="../img/facebook.avif" alt="Facebook">
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Institution & Links -->
+        <div class="footer-col">
+          <h4>Institution</h4>
+          <a href="https://www.aitrcvita.edu.in/" class="inst-name"><i class="fas fa-globe"></i> AITRC, Vita</a>
+          <p style="margin-bottom: 1.8rem;">Adarsh Institute of Technology and Research Center, Vita. Empowering students with quality technical education.</p>
+          
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="index.html">About</a></li>
           </ul>
         </div>
-      </div>
-    </section>
 
-    <!-- RULES -->
-    <section class="section muted" id="rules" data-reveal>
-      <div class="container">
-        <span class="eyebrow">Rules & Regulations</span>
-        <h2>Play fair</h2>
-        <ul class="list">
-          <li>Strictly no plagiarism – disqualification if caught.</li>
-          <li>Use only the provided IDE / environment.</li>
-          <li>Decision of judges is final and binding.</li>
-          <li>Laptops must be fully charged.</li>
-        </ul>
-      </div>
-    </section>
+        <!-- Col 3: Contact Us -->
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>contact@creo.tech</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-location-dot"></i>
+            <span>AITRC Vita, <br>  MIDC Vita ,Sangli road , <br>Vita, Maharashtra 415311</span>
+          </div>
+          <a href="https://maps.app.goo.gl/2hbUMzWp31BV2LweA" class="view-map-btn"><i class="fas fa-map-marker-alt"></i> View on Map</a>
 
-    <!-- COORDINATORS -->
-    <section class="section" id="coordinators">
-      <div class="container section-header" data-reveal>
-        <span class="eyebrow">Coordinators</span>
-        <h2>Faculty & Students</h2>
-      </div>
-      <div class="container card-grid" data-reveal>
-        <article class="info-card">
-          <h3>Faculty</h3>
-          <p>Prof. R. Patil<br>+91 98765 43210</p>
-        </article>
-        <article class="info-card">
-          <h3>Students</h3>
-          <p>A. Shaikh (TY)<br>P. Desai (SY)</p>
-        </article>
-      </div>
-    </section>
+          <!-- Help & Support Box -->
 
-    <!-- REGISTRATION -->
-    <section class="section" id="register">
-      <div class="container register-grid" data-reveal>
-        <div class="register-info">
-          <span class="eyebrow">Registration</span>
-          <h2>Lock your slot</h2>
-          <p class="section-lede">Limited seats – register early</p>
-          <ul class="list compact">
-            <li>Registration closes 5 March 2026.</li>
-            <li>On‑spot payment via UPI/card.</li>
-            <li>Reporting time: 9:30 AM at CS Lab 101.</li>
-          </ul>
         </div>
-        <div class="register-card">
-          <p class="label" style="color: var(--accent);">Ready?</p>
-          <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-            Use the external form to complete registration. The button below opens the form in a new tab.
-          </p>
-          <ul class="register-meta">
-            <li><span>Entries</span><strong>60</strong></li>
-            <li><span>Fee</span><strong>₹150</strong></li>
-            <li><span>Department</span><strong>CSE / AIML</strong></li>
-            <li><span>Venue</span><strong>CS Lab 101</strong></li>
-            <li><span>Reporting</span><strong>09:30 AM</strong></li>
-          </ul>
-          <a class="btn full" href="https://example.com/register" target="_blank" rel="noopener">Register Now</a>
-        </div>
-      </div>
-    </section>
-  </main>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="brand">CREO 2K26</div>
-        <p style="color: var(--text-secondary);">Modern tech fest by the campus community.</p>
-      </div>
-      <div class="footer-links">
-        <a href="mailto:contact@creo.tech">contact@creo.tech</a>
-        <a href="tel:+910000000000">+91 00000 00000</a>
-      </div>
-      <div class="footer-links">
-        <a href="events.html">Events</a>
-        <a href="index.html#prize">Prize Pool</a>
+          <div class="footer-col">
+            <h4>Organizers</h4>
+            <p>Proudly organized and managed by the student community of CSE & CM AITRC, Vita.</p>
+            <div class="organizer-logos">
+              <img src="../img/cse.jpeg" alt="AITRC Logo">
+              <img src="../img/cm.jpeg" alt="CREO Logo">
+              <img src="../img/headerlogo.jpeg" alt="CREO Logo">
+            </div>
+          </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 CREO 2K26. All rights reserved. Designed for innovators.</p>
       </div>
     </div>
-    <p class="footer-note">© 2026 CREO 2K26. All rights reserved.</p>
   </footer>
 
-  <script>
-    (function() {
-      // smooth anchor scroll
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          if (href === "#" || href === "#home") return;
-          const target = document.querySelector(href);
-          if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    <script>
+      // Reveal Animation Script
+      const observerOptions = { threshold: 0.1 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
         });
-      });
-    })();
-  </script>
-</body>
+      }, observerOptions);
+
+      document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
+  </body>
 </html>

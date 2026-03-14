@@ -1,164 +1,338 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CREO 2K26 | Vision Board</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../style.css" />
-  </head>
-  <body>
-    <header class="navbar">
-      <div class="container nav-inner">
-        <div class="brand">CREO 2K26</div>
-        <nav class="nav-links">
-          <a href="../index.html">Home</a>
-          <a href="../events.html">Events</a>
-        </nav>
-        <a class="btn btn-ghost" href="#register" data-scroll>Register</a>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CREO 2K26 | Vision Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ----- THEME COLORS ----- */
+    :root {
+      --bg: #0a0c0f;
+      --surface: #11151c;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b8c5;
+      --accent: #00e0ff;
+      --accent-glow: rgba(0, 224, 255, 0.25);
+      --border: #2a2f3a;
+      --shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.8);
+      --radius: 1.5rem;
+      --transition: all 0.3s ease;
+    }
 
-    <main>
-      <section class="hero hero-sub" id="top">
-        <div class="container hero-grid">
-          <div class="hero-copy" data-reveal>
-            <span class="eyebrow">Category: Vision Poster</span>
-            <h1>Vision Board</h1>
-            <p class="lede">Inspire your future with a vision.</p>
-            <div class="pill-row">
-              <span class="pill">Department: GSE Degree</span>
-              <span class="pill">Entries: 100 · Fee: ₹125/-</span>
-            </div>
-            <a class="btn" href="#register" data-scroll>Register Now</a>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .container { width: min(92%, 1200px); margin: 0 auto; }
+
+    /* ----- NAVBAR ----- */
+    .navbar {
+      background: rgba(10, 12, 15, 0.85);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-weight: 800; color: var(--accent); font-size: 1.3rem; letter-spacing: -1px; }
+    .nav-links { display: flex; gap: 1.2rem; }
+    .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ----- HERO ----- */
+    .hero-sub { padding: 4rem 0; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; font-size: 0.7rem;
+      color: var(--accent); background: rgba(0, 224, 255, 0.1); display: inline-block;
+      padding: 0.4rem 1rem; border-radius: 40px; margin-bottom: 1.2rem; border: 1px solid rgba(0, 224, 255, 0.2);
+    }
+    
+    h1 { font-size: clamp(2.2rem, 7vw, 4rem); margin-bottom: 1rem; line-height: 1.1; font-weight: 800; }
+    .lede { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; }
+
+    /* ----- BUTTONS ----- */
+    .btn {
+      display: inline-block; background: var(--accent); color: #0a0c0f; font-weight: 700;
+      padding: 0.9rem 2.2rem; border-radius: 50px; text-decoration: none; border: 2px solid var(--accent);
+      transition: var(--transition); text-align: center;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-glow); }
+    .btn-ghost { background: transparent; color: var(--accent); border-color: var(--accent); padding: 0.5rem 1.2rem; font-size: 0.85rem; }
+    .full { width: 100%; }
+
+    /* ----- CARDS ----- */
+    .pill-row { display: flex; gap: 0.6rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .pill { 
+      border: 1px solid var(--border); padding: 0.4rem 0.9rem; border-radius: 50px; 
+      font-size: 0.8rem; background: var(--surface); color: var(--text-secondary);
+    }
+
+    .glass-card, .info-card, .register-card {
+      background: var(--surface); padding: 2rem; border-radius: var(--radius);
+      border: 1px solid var(--border); transition: var(--transition);
+    }
+    .info-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+
+    .label { color: var(--accent); text-transform: uppercase; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.5rem; display: block; }
+    .list { list-style: none; margin: 1rem 0; }
+    .list li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; color: var(--text-secondary); font-size: 0.95rem; }
+    .list li::before { content: "\f061"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; top: 4px; }
+
+    /* ----- SECTIONS ----- */
+    .section { padding: 4rem 0; }
+    .muted { background: #0d1016; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    
+    /* ----- REGISTER ----- */
+    .register-grid { display: grid; grid-template-columns: 1fr 400px; gap: 3rem; }
+    .register-meta { list-style: none; margin: 1.5rem 0; }
+    .register-meta li { 
+      display: flex; justify-content: space-between; padding: 0.7rem 0; 
+      border-bottom: 1px solid var(--border); gap: 1rem; font-size: 0.9rem;
+    }
+    .register-meta strong { color: var(--accent); }
+
+    /* ----- FOOTER ----- */
+    .footer-main { background: #07090c; border-top: 1px solid var(--border); padding: 4rem 0 2rem; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; margin-bottom: 3rem; }
+    .footer-col h4 { color: var(--text-primary); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; margin-bottom: 1.5rem; border-left: 3px solid var(--accent); padding-left: 12px; }
+    .footer-col p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+    
+    .social-links { display: flex; gap: 0.8rem; margin-top: 1.2rem; flex-wrap: wrap; }
+    .social-links a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--border); border-radius: 50%; overflow: hidden; transition: var(--transition); }
+    .social-links a img { width: 100%; height: 100%; object-fit: cover; }
+    .social-links a:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
+
+    .inst-name { color: var(--accent); font-weight: 700; margin-bottom: 8px; display: block; text-decoration: none; font-size: 0.95rem; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
+    .footer-links a:hover { color: var(--accent); padding-left: 5px; }
+
+    .contact-item { display: flex; gap: 10px; margin-bottom: 12px; color: var(--text-secondary); font-size: 0.85rem; }
+    .contact-item i { color: var(--accent); }
+    
+    .view-map-btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); color: var(--accent); padding: 6px 14px; border-radius: 4px; font-size: 0.8rem; text-decoration: none; transition: var(--transition); margin-top: 5px; }
+    .view-map-btn:hover { background: var(--accent); color: var(--bg); }
+
+    .organizer-logos { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+    .organizer-logos img { height: 40px; background: #fff; border-radius: 4px; padding: 3px; }
+
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; font-size: 0.8rem; color: var(--text-secondary); opacity: 0.7; }
+
+    /* Reveal Animation */
+    [data-reveal] { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+.brand {
+      font-weight: 800; font-size: clamp(1.2rem, 4vw, 1.4rem); color: var(--accent); letter-spacing: 1px;
+      text-shadow: 0 0 8px var(--accent); white-space: nowrap;
+    }
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 1024px) {
+      .hero-grid, .register-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-copy { text-align: center; display: flex; flex-direction: column; align-items: center; }
+      .hero-visual { max-width: 500px; margin: 0 auto; width: 100%; }
+      .pill-row { justify-content: center; }
+    }
+
+    @media (max-width: 768px) {
+      .two-col { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { display: none; } /* Hide links for mobile spacing */
+      .section { padding: 3rem 0; }
+      /* Ensure text comes FIRST in mobile view */
+      .hero-grid { display: flex; flex-direction: column; }
+      .hero-copy { order: 1; }
+      .hero-visual { order: 2; margin-top: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <div class="brand">CREOWORLD 2K26</div>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../events.html">Events</a>
+      </nav>
+      <a class="btn btn-ghost" href="#register">Register</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-sub" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy" data-reveal>
+          <span class="eyebrow">Category: Vision Poster</span>
+          <h1>Vision Board</h1>
+          <p class="lede">Inspire your future with a vision. A platform to showcase your path to success.</p>
+          <div class="pill-row">
+            <span class="pill">Department: GSE Degree</span>
+            <span class="pill">Fee: ₹125/-</span>
           </div>
-          <div class="hero-visual" data-reveal>
-            <div class="glass-card">
-              <p class="label">Quick Snapshot</p>
-              <ul class="list compact">
-                <li>Single presentation round of the Vision Board.</li>
-                <li>Highlight career and future goals with clarity.</li>
-                <li>Open to solo or pairs.</li>
-              </ul>
-            </div>
-          </div>
+          <a class="btn" href="#register">Register Now</a>
         </div>
-      </section>
-
-      <section class="section" id="structure">
-        <div class="container two-col" data-reveal>
-          <div>
-            <span class="eyebrow">Rounds / Structure</span>
-            <h2>How it runs</h2>
-            <ul class="list">
-              <li>Single presentation round of the Vision Board.</li>
-            </ul>
-          </div>
-          <div>
-            <span class="eyebrow">Entries & Fee</span>
-            <h2>Slots</h2>
+        <div class="hero-visual" data-reveal>
+          <div class="glass-card">
+            <p class="label">Quick Snapshot</p>
             <ul class="list compact">
-              <li><strong>Entries:</strong> 100</li>
-              <li><strong>Fee:</strong> ₹125/-</li>
+              <li>Single presentation round.</li>
+              <li>Highlight career and future goals.</li>
+              <li>Open to solo or pairs.</li>
             </ul>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section muted" id="rules" data-reveal>
-        <div class="container">
-          <span class="eyebrow">Rules & Regulations</span>
-          <h2>Play fair</h2>
+    <section class="section" id="structure">
+      <div class="container two-col" data-reveal>
+        <div>
+          <span class="eyebrow">Rounds / Structure</span>
+          <h2>How it runs</h2>
           <ul class="list">
-            <li>Solo or teams of 2.</li>
-            <li>Presentation focused on career and future goals.</li>
-            <li>Ensure visuals are clear and easy to read.</li>
-            <li>Stay within the presentation time shared onsite.</li>
+            <li>Single presentation round of the Vision Board.</li>
+            <li>Direct evaluation by the judging panel.</li>
           </ul>
         </div>
-      </section>
-
-      <section class="section" id="coordinators">
-        <div class="container section-header" data-reveal>
-          <span class="eyebrow">Coordinators</span>
-          <h2>Faculty & Students</h2>
-        </div>
-        <div class="container card-grid" data-reveal>
-          <article class="info-card">
-            <h3>Faculty</h3>
-            <p>Prof. P.S. Patil</p>
-            <p class="label">+91 7066295229</p>
-          </article>
-          <article class="info-card">
-            <h3>Students</h3>
-            <p>Yashraj Sapkal</p>
-            <p class="label">+91 7559201300</p>
-            <p>Samiksha Jamadade</p>
-            <p class="label">+91 8551008169</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="register">
-        <div class="container register-grid" data-reveal>
-          <div class="register-info">
-            <span class="eyebrow">Registration</span>
-            <h2>Lock your slot</h2>
-            <p class="section-lede">100 entries · ₹125/-</p>
-            <ul class="list compact">
-              <li>Prepare your vision board before the event.</li>
-              <li>Bring a valid student ID for verification.</li>
-              <li>Reporting time: 9:30 AM at GSE Degree Lab.</li>
-            </ul>
-          </div>
-          <div class="register-card">
-            <p class="label">Ready?</p>
-            <p>
-              Use the external form to complete registration. The top button
-              scrolls you here; this button opens the form in a new tab.
-            </p>
-            <ul class="register-meta">
-              <li><span>Entries</span><strong>100</strong></li>
-              <li><span>Fee</span><strong>₹125/-</strong></li>
-              <li><span>Department</span><strong>GSE Degree</strong></li>
-              <li><span>Venue</span><strong>GSE Degree Lab</strong></li>
-              <li><span>Reporting</span><strong>09:30 AM</strong></li>
-            </ul>
-            <a
-              class="btn full"
-              href="https://forms.gle/Ti1AwkLkZSrpjvr18"
-              target="_blank"
-              rel="noopener"
-              >Register Now</a
-            >
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container footer-grid">
         <div>
-          <div class="brand">CREO 2K26</div>
-          <p>Modern tech fest by the campus community.</p>
-        </div>
-        <div class="footer-links">
-          <a href="mailto:contact@creo.tech">contact@creo.tech</a>
-          <a href="tel:+910000000000">+91 00000 00000</a>
-        </div>
-        <div class="footer-links">
-          <a href="../events.html">Events</a>
-          <a href="../index.html#prize">Prize Pool</a>
+          <span class="eyebrow">Entries & Fee</span>
+          <h2>Slots</h2>
+          <ul class="list">
+            <li><strong>Entries:</strong> Limited seats are available.</li>
+            <li><strong>Fee:</strong> ₹125/- per entry.</li>
+          </ul>
         </div>
       </div>
-      <p class="footer-note">© 2026 CREO 2K26. All rights reserved.</p>
-    </footer>
+    </section>
 
-    <script src="../script.js"></script>
-  </body>
+    <section class="section muted" id="rules" data-reveal>
+      <div class="container">
+        <span class="eyebrow">Rules & Regulations</span>
+        <h2>Play fair</h2>
+        <ul class="list">
+          <li>Solo or teams of maximum 2.</li>
+          <li>Presentation focused on career and future goals.</li>
+          <li>Ensure visuals are clear and easy to read.</li>
+          <li>Stay within the assigned presentation time limit.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="coordinators">
+      <div class="container" style="margin-bottom: 2rem;" data-reveal>
+        <span class="eyebrow">Coordinators</span>
+        <h2>Faculty & Students</h2>
+      </div>
+      <div class="container card-grid" data-reveal>
+        <article class="info-card">
+          <h3>Faculty</h3>
+          <p>Prof. P.S. Patil</p>
+          <p class="label" style="margin-top:10px;">+91 7066295229</p>
+        </article>
+        <article class="info-card">
+          <h3>Students</h3>
+          <p>Yashraj Sapkal</p>
+          <p class="label" style="margin-bottom:15px;">+91 7559201300</p>
+          <p>Samiksha Jamadade</p>
+          <p class="label">+91 8551008169</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="register">
+      <div class="container register-grid" data-reveal>
+        <div class="register-info">
+          <span class="eyebrow">Registration</span>
+          <h2>Lock your slot</h2>
+          <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Limited entries available for this category.</p>
+          <ul class="list">
+            <li>Prepare your vision board before the event.</li>
+            <li>Bring valid student ID for verification.</li>
+            <li>Reporting time: 9:30 AM at GSE Degree Lab.</li>
+          </ul>
+        </div>
+        <div class="register-card">
+          <p class="label">Ready to participate?</p>
+          <ul class="register-meta">
+            <li><span>Fee</span><strong>₹125/-</strong></li>
+            <li><span>Department</span><strong>GSE Degree</strong></li>
+            <li><span>Venue</span><strong>GSE Degree Lab</strong></li>
+            <li><span>Reporting</span><strong>09:30 AM</strong></li>
+          </ul>
+          <a class="btn full" href="https://forms.gle/Ti1AwkLkZSrpjvr18" target="_blank" rel="noopener">Register Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>CREO 2K26</h4>
+          <p>A technical and cultural battlefield for the brilliant minds of AITRC Vita. Forge your path in a festival of innovation.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/aitrcvita" target="_blank"><img src="../img/instagram.jpg" alt="IG"></a>
+            <a href="https://www.linkedin.com/in/adarsh-institute-of-technology-vita-64115a141/" target="_blank"><img src="../img/linkedin.avif" alt="IN"></a>
+            <a href="https://www.youtube.com/@aitrcvita" target="_blank"><img src="../img/youtube.avif" alt="YT"></a>
+            <a href="https://www.facebook.com/AITRC/" target="_blank"><img src="../img/facebook.avif" alt="FB"></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Institution</h4>
+          <a href="https://www.aitrcvita.edu.in/" class="inst-name"><i class="fas fa-globe"></i> AITRC, Vita</a>
+          <p>Adarsh Institute of Technology and Research Center, Vita. Empowering students with quality technical education.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="contact-item"><i class="fas fa-envelope"></i><span>contact@creo.tech</span></div>
+          <div class="contact-item"><i class="fas fa-location-dot"></i><span>AITRC Vita, MIDC Sangli road, Vita, MH.</span></div>
+          <a href="https://maps.app.goo.gl/2hbUMzWp31BV2LweA" class="view-map-btn"><i class="fas fa-map-marker-alt"></i> View on Map</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Organizers</h4>
+          <p>Managed by the student community of CSE & CM.</p>
+          <div class="organizer-logos">
+            <img src="../img/cse.jpeg" alt="CSE">
+            <img src="../img/cm.jpeg" alt="CM">
+            <img src="../img/headerlogo.jpeg" alt="AITRC">
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 CREO 2K26. All rights reserved. Designed for innovators.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal Animation Script
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+  </script>
+</body>
 </html>

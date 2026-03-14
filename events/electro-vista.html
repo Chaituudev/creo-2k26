@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,20 +7,185 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../style.css" />
+    <!-- Added FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      /* ----- THEME COLORS ----- */
+      :root {
+        --bg: #0a0c0f;
+        --surface: #11151c;
+        --text-primary: #ffffff;
+        --text-secondary: #b0b8c5;
+        --accent: #00e0ff;
+        --accent-glow: rgba(0, 224, 255, 0.25);
+        --border: #2a2f3a;
+        --shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.8);
+        --radius: 1.5rem;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: var(--bg);
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      .container { width: min(92%, 1200px); margin: 0 auto; }
+
+      /* ----- NAVBAR ----- */
+      .navbar {
+        background: rgba(10, 12, 15, 0.85);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid var(--border);
+        padding: 0.8rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+      .brand { font-weight: 800; color: var(--accent); font-size: 1.3rem; letter-spacing: -1px; text-decoration: none;}
+      .nav-links { display: flex; gap: 1.5rem; }
+      .nav-links a { 
+        text-decoration: none; color: var(--text-secondary); 
+        font-weight: 600; font-size: 0.9rem; transition: var(--transition);
+      }
+      .nav-links a:hover { color: var(--accent); }
+
+      /* ----- HERO ----- */
+      .hero-sub { padding: 4rem 0; }
+      .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+      
+      .eyebrow {
+        text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; font-size: 0.7rem;
+        color: var(--accent); background: rgba(0, 224, 255, 0.1); display: inline-block;
+        padding: 0.4rem 1rem; border-radius: 40px; margin-bottom: 1.2rem; border: 1px solid rgba(0, 224, 255, 0.2);
+      }
+      
+      h1 { font-size: clamp(2.2rem, 7vw, 4rem); margin-bottom: 1rem; line-height: 1.1; font-weight: 800; }
+      .lede { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; }
+
+      /* ----- BUTTONS ----- */
+      .btn {
+        display: inline-block; background: var(--accent); color: #0a0c0f; font-weight: 700;
+        padding: 0.9rem 2.2rem; border-radius: 50px; text-decoration: none; border: 2px solid var(--accent);
+        transition: var(--transition); text-align: center;
+      }
+      .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-glow); }
+      .btn-ghost { background: transparent; color: var(--accent); border-color: var(--accent); padding: 0.5rem 1.2rem; font-size: 0.85rem; }
+      .full { width: 100%; }
+
+      /* ----- PILLS & CARDS ----- */
+      .pill-row { display: flex; gap: 0.6rem; margin-bottom: 2rem; flex-wrap: wrap; }
+      .pill { 
+        border: 1px solid var(--border); padding: 0.4rem 0.9rem; border-radius: 50px; 
+        font-size: 0.8rem; background: var(--surface); color: var(--text-secondary);
+      }
+
+      .glass-card, .info-card, .register-card {
+        background: var(--surface); padding: 2rem; border-radius: var(--radius);
+        border: 1px solid var(--border); transition: var(--transition);
+      }
+      .info-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+
+      .label { color: var(--accent); text-transform: uppercase; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.5rem; display: block; }
+      .list { list-style: none; margin: 1rem 0; }
+      .list li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; color: var(--text-secondary); font-size: 0.95rem; }
+      .list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+
+      /* ----- SECTIONS ----- */
+      .section { padding: 4rem 0; }
+      .muted { background: #0d1016; }
+      .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+      .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+      
+      /* ----- REGISTER ----- */
+      .register-grid { display: grid; grid-template-columns: 1fr 400px; gap: 3rem; }
+      .register-meta { list-style: none; margin: 1.5rem 0; }
+      .register-meta li { 
+        display: flex; justify-content: space-between; padding: 0.7rem 0; 
+        border-bottom: 1px solid var(--border); gap: 1rem; font-size: 0.9rem;
+      }
+      .register-meta strong { color: var(--accent); }
+
+      /* ----- FOOTER ----- */
+      .footer-main { background: #07090c; border-top: 1px solid var(--border); padding: 4rem 0 2rem; }
+      .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; margin-bottom: 3rem; }
+      .footer-col h4 { color: var(--text-primary); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; margin-bottom: 1.5rem; border-left: 3px solid var(--accent); padding-left: 12px; }
+      .footer-col p { font-size: 0.9rem; line-height: 1.7; color: var(--text-secondary); }
+      
+      .social-links { display: flex; gap: 0.8rem; margin-top: 1.2rem; flex-wrap: wrap; }
+      .social-links a { 
+        width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; 
+        background: var(--surface); border: 1px solid var(--border); border-radius: 50%; 
+        transition: var(--transition); overflow: hidden;
+      }
+      .social-links a img { width: 100%; height: 100%; object-fit: cover; }
+      .social-links a:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
+
+      .inst-name { color: var(--accent); font-weight: 700; margin-bottom: 8px; display: block; text-decoration: none; font-size: 0.95rem; }
+      .footer-links { list-style: none; }
+      .footer-links li { margin-bottom: 10px; }
+      .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
+      .footer-links a:hover { color: var(--accent); padding-left: 5px; }
+
+      .contact-item { display: flex; gap: 10px; margin-bottom: 12px; color: var(--text-secondary); font-size: 0.85rem; }
+      .contact-item i { color: var(--accent); }
+      
+      .view-map-btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); color: var(--accent); padding: 6px 14px; border-radius: 4px; font-size: 0.8rem; text-decoration: none; transition: var(--transition); margin-top: 5px; }
+      .view-map-btn:hover { background: var(--accent); color: var(--bg); }
+
+      .organizer-logos { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+      .organizer-logos img { height: 40px; background: #fff; border-radius: 4px; padding: 3px; }
+
+      .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; font-size: 0.8rem; color: var(--text-secondary); opacity: 0.7;}
+
+      /* Reveal Animation Styles */
+      [data-reveal] { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+      [data-reveal].visible { opacity: 1; transform: translateY(0); }
+
+      /* ----- RESPONSIVE ----- */
+      @media (max-width: 1024px) {
+        .hero-grid, .register-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+        .hero-copy { text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .pill-row { justify-content: center; }
+        .hero-visual { max-width: 500px; margin: 0 auto; width: 100%; }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .two-col { grid-template-columns: 1fr; gap: 2rem; }
+        .section { padding: 3rem 0; }
+        
+        /* Ensure EVENT NAME (Hero Text) shows FIRST in mobile */
+        .hero-grid { display: flex; flex-direction: column; }
+        .hero-copy { order: 1; }
+        .hero-visual { order: 2; margin-top: 1.5rem; }
+        
+        .btn { width: 100%; }
+      }
+      .brand {
+      font-weight: 800; font-size: clamp(1.2rem, 4vw, 1.4rem); color: var(--accent); letter-spacing: 1px;
+      text-shadow: 0 0 8px var(--accent); white-space: nowrap;
+    }
+    </style>
   </head>
   <body>
     <header class="navbar">
       <div class="container nav-inner">
-        <div class="brand">CREO 2K26</div>
+        <div class="brand">CREOWORLD 2K26</div>
         <nav class="nav-links">
           <a href="../index.html">Home</a>
           <a href="../events.html">Events</a>
         </nav>
-        <a class="btn btn-ghost" href="#register" data-scroll>Register</a>
+        <a class="btn btn-ghost" href="#register">Register</a>
       </div>
     </header>
 
@@ -30,20 +195,20 @@
           <div class="hero-copy" data-reveal>
             <span class="eyebrow">Category: Technical Poster</span>
             <h1>Electro-Vista</h1>
-            <p class="lede">Bright ideas, bold presentations.</p>
+            <p class="lede">Bright ideas, bold presentations. Showcase your technical vision through high-impact visual communication.</p>
             <div class="pill-row">
               <span class="pill">Department: EE Diploma</span>
-              <span class="pill">Entries: 30 · Fee: ₹125/-</span>
+              <span class="pill">Fee: ₹125/-</span>
             </div>
-            <a class="btn" href="#register" data-scroll>Register Now</a>
+            <a class="btn" href="#register">Register Now</a>
           </div>
           <div class="hero-visual" data-reveal>
             <div class="glass-card">
               <p class="label">Quick Snapshot</p>
               <ul class="list compact">
-                <li>Single round of poster explanation (3-5 minutes).</li>
-                <li>Show clarity, creativity, and confident delivery.</li>
-                <li>Handmade or digital A1/A2 posters welcome.</li>
+                <li>3-5 minutes poster explanation.</li>
+                <li>Focus on clarity and delivery.</li>
+                <li>Handmade or digital A1/A2 posters.</li>
               </ul>
             </div>
           </div>
@@ -56,15 +221,16 @@
             <span class="eyebrow">Rounds / Structure</span>
             <h2>How it runs</h2>
             <ul class="list">
-              <li>Single round consisting of poster explanation (3-5 mins).</li>
+              <li>A single competitive round focusing on the poster presentation and Q&A from judges.</li>
+              <li>Presentations are timed at 3-5 minutes per team.</li>
             </ul>
           </div>
           <div>
             <span class="eyebrow">Entries & Fee</span>
             <h2>Slots</h2>
-            <ul class="list compact">
-              <li><strong>Entries:</strong> 30</li>
-              <li><strong>Fee:</strong> ₹125/-</li>
+            <ul class="list">
+              <li><strong>Entries:</strong> Limited slots available.</li>
+              <li><strong>Fee:</strong> ₹125/- per entry.</li>
             </ul>
           </div>
         </div>
@@ -75,16 +241,16 @@
           <span class="eyebrow">Rules & Regulations</span>
           <h2>Play fair</h2>
           <ul class="list">
-            <li>Teams of maximum 2 participants.</li>
-            <li>Handmade or digital A1/A2 poster accepted.</li>
-            <li>Judged on clarity, creativity, and delivery.</li>
-            <li>Present within the 3–5 minute window.</li>
+            <li>Teams of maximum 2 participants only.</li>
+            <li>Poster size must be A1 or A2 (handmade or printed).</li>
+            <li>Participants will be judged on technical content, clarity, and presentation skills.</li>
+            <li>Respect the 3–5 minute presentation window; exceeding time may lead to negative marking.</li>
           </ul>
         </div>
       </section>
 
       <section class="section" id="coordinators">
-        <div class="container section-header" data-reveal>
+        <div class="container" style="margin-bottom: 2rem;" data-reveal>
           <span class="eyebrow">Coordinators</span>
           <h2>Faculty & Students</h2>
         </div>
@@ -92,7 +258,7 @@
           <article class="info-card">
             <h3>Faculty</h3>
             <p>Ms. Prerna Dilip More</p>
-            <p class="label">+91 9021456328</p>
+            <p class="label" style="margin-top:10px;">+91 9021456328</p>
           </article>
           <article class="info-card">
             <h3>Students</h3>
@@ -107,56 +273,78 @@
           <div class="register-info">
             <span class="eyebrow">Registration</span>
             <h2>Lock your slot</h2>
-            <p class="section-lede">30 entries · ₹125/-</p>
-            <ul class="list compact">
-              <li>Bring your poster or digital file as required.</li>
-              <li>Carry a valid student ID for verification.</li>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Limited seats available for technical presentations. Secure your spot now.</p>
+            <ul class="list">
+              <li>Bring your completed poster (Physical or Digital file as per choice).</li>
+              <li>Carry a valid college student ID card.</li>
               <li>Reporting time: 9:30 AM at EE Diploma Lab.</li>
             </ul>
           </div>
           <div class="register-card">
-            <p class="label">Ready?</p>
-            <p>
-              Use the external form to complete registration. The top button
-              scrolls you here; this button opens the form in a new tab.
-            </p>
+            <p class="label">Ready to Present?</p>
             <ul class="register-meta">
-              <li><span>Entries</span><strong>30</strong></li>
-              <li><span>Fee</span><strong>₹125/-</strong></li>
+              <li><span>Entry Fee</span><strong>₹125/-</strong></li>
               <li><span>Department</span><strong>EE Diploma</strong></li>
               <li><span>Venue</span><strong>EE Diploma Lab</strong></li>
               <li><span>Reporting</span><strong>09:30 AM</strong></li>
             </ul>
-            <a
-              class="btn full"
-              href="https://forms.gle/wpnKYuNJmM1pJNww9"
-              target="_blank"
-              rel="noopener"
-              >Register Now</a
-            >
+            <a class="btn full" href="https://forms.gle/wpnKYuNJmM1pJNww9" target="_blank" rel="noopener">Register Now</a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="container footer-grid">
-        <div>
-          <div class="brand">CREO 2K26</div>
-          <p>Modern tech fest by the campus community.</p>
+    <footer class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>CREO 2K26</h4>
+            <p>A technical and cultural battlefield for the brilliant minds of AITRC Vita. Forge your path in a festival of innovation.</p>
+            <div class="social-links">
+              <a href="https://www.instagram.com/aitrcvita" target="_blank"><img src="../img/instagram.jpg" alt="IG"></a>
+              <a href="https://www.linkedin.com/in/adarsh-institute-of-technology-vita-64115a141/" target="_blank"><img src="../img/linkedin.avif" alt="IN"></a>
+              <a href="https://www.youtube.com/@aitrcvita" target="_blank"><img src="../img/youtube.avif" alt="YT"></a>
+              <a href="https://www.facebook.com/AITRC/" target="_blank"><img src="../img/facebook.avif" alt="FB"></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Institution</h4>
+            <a href="https://www.aitrcvita.edu.in/" class="inst-name"><i class="fas fa-globe"></i> AITRC, Vita</a>
+            <p>Adarsh Institute of Technology and Research Center, Vita. Empowering students with quality technical education.</p>
+          </div>
+
+          <div class="footer-col">
+            <h4>Contact Us</h4>
+            <div class="contact-item"><i class="fas fa-envelope"></i><span>contact@creo.tech</span></div>
+            <div class="contact-item"><i class="fas fa-location-dot"></i><span>AITRC Vita, Sangli road, Vita, MH.</span></div>
+            <a href="https://maps.app.goo.gl/2hbUMzWp31BV2LweA" class="view-map-btn"><i class="fas fa-map-marker-alt"></i> View on Map</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>Organizers</h4>
+            <p>Proudly organized and managed by CSE & CM AITRC, Vita.</p>
+            <div class="organizer-logos">
+              <img src="../img/cse.jpeg" alt="CSE">
+              <img src="../img/cm.jpeg" alt="CM">
+              <img src="../img/headerlogo.jpeg" alt="Logo">
+            </div>
+          </div>
         </div>
-        <div class="footer-links">
-          <a href="mailto:contact@creo.tech">contact@creo.tech</a>
-          <a href="tel:+910000000000">+91 00000 00000</a>
-        </div>
-        <div class="footer-links">
-          <a href="../events.html">Events</a>
-          <a href="../index.html#prize">Prize Pool</a>
+        <div class="footer-bottom">
+          <p>© 2026 CREO 2K26. All rights reserved. Designed for innovators.</p>
         </div>
       </div>
-      <p class="footer-note">© 2026 CREO 2K26. All rights reserved.</p>
     </footer>
 
-    <script src="../script.js"></script>
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
   </body>
 </html>
