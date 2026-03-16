@@ -1,3 +1,5 @@
+--- START OF FILE Paste March 16, 2026 - 1:29PM ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,6 +117,15 @@
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
     .card { background: var(--surface); padding: 2rem; border-radius: 1.5rem; border: 1px solid var(--border); }
     .card h3 { color: var(--accent); margin-bottom: 0.8rem; font-size: 1.3rem; }
+
+    /* ----- CHIEF GUEST STYLES ----- */
+    .guest-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); justify-content: center; }
+    .guest-card { text-align: center; transition: var(--transition); border-bottom: 4px solid transparent; }
+    .guest-card:hover { border-bottom: 4px solid var(--accent); transform: translateY(-5px); }
+    .guest-img-wrapper { width: 160px; height: 160px; margin: 0 auto 1.5rem; border-radius: 50%; border: 3px solid var(--accent); overflow: hidden; background: var(--border); }
+    .guest-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    .guest-card h3 { color: var(--accent); margin-bottom: 0.4rem; }
+    .guest-card .designation { font-weight: 600; color: #fff; font-size: 0.95rem; margin-bottom: 0.5rem; }
 
     /* ----- SPONSOR SECTION ----- */
     .sponsor-card-highlight {
@@ -403,6 +414,39 @@
             <a href="https://www.proazuresoft.com" target="_blank" class="sponsor-link">
               Visit Website <i class="fas fa-arrow-right"></i>
             </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHIEF GUEST SECTION -->
+    <section class="section" id="guests">
+      <div class="container">
+        <h2 data-reveal>Chief Guests</h2>
+        <div class="grid guest-grid">
+          <!-- Guest 1 -->
+          <div class="card guest-card" data-reveal>
+            <!-- <div class="guest-img-wrapper">
+              <img src="./img/guest1.jpg" alt="Chief Guest 1">
+            </div> -->
+            <h3>Mr. Bapu Arkas</h3>
+            <p class="designation">Entrepreneur | CEO| Motivational Speaker</p>
+            <p>Mr. Bapu Arkas is an CEO in the ProAzure
+Software Solutions Pvt. Ltd. Pune. 
+He is Founder of 05 companies 
+He has 05 years of teaching experience as a core
+Academician and has exceptional
+administrative abilities and 05 years of IT
+Industry. </p>
+          </div>
+          <!-- Guest 2 -->
+          <div class="card guest-card" data-reveal>
+            <!-- <div class="guest-img-wrapper">
+              <img src="./img/guest2.jpg" alt="Chief Guest 2">
+            </div> -->
+            <h3>Mr. Amit A. Mhetre</h3>
+            <p class="designation"> Principal Architect & Founder</p>
+            <p> A distinguished architect with 22+ years of global experience. After serving for 12 years across GCC countries (Gulf), he returned to India to establish his own design studio.</p>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CREOWORLD 2K26 | AI Prompt Battle</title>
+    <title>CREO 2K26 | AI Prompt Battle</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,18 +13,18 @@
     <!-- Added FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-      /* ----- 1. THEME VARIABLES ----- */
+      /* ----- 1. VARIABLES & RESET ----- */
       :root {
-        --bg: #0a0c0f;
-        --surface: #11151c;
+        --bg: #0a0c10;
+        --surface: #12161f;
         --surface-light: #1a1f2b;
         --text-primary: #ffffff;
-        --text-secondary: #b0b8c5;
+        --text-secondary: #a0aec0;
         --accent: #00e0ff;
-        --accent-glow: rgba(0, 224, 255, 0.25);
-        --border: #2a2f3a;
-        --shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.8);
-        --radius: 1.5rem;
+        --accent-glow: rgba(0, 224, 255, 0.3);
+        --border: rgba(255, 255, 255, 0.1);
+        --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        --radius: 1.25rem;
         --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
@@ -43,13 +43,13 @@
 
       /* ----- 2. NAVIGATION ----- */
       .navbar {
-        background: rgba(10, 12, 15, 0.85);
-        backdrop-filter: blur(15px);
+        background: rgba(10, 12, 16, 0.85);
+        backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--border);
         padding: 0.8rem 0;
         position: sticky;
         top: 0;
-        z-index: 100;
+        z-index: 1000;
       }
 
       .nav-inner { display: flex; justify-content: space-between; align-items: center; }
@@ -62,10 +62,10 @@
       .btn {
         display: inline-flex; align-items: center; justify-content: center;
         background: var(--accent); color: #000; font-weight: 700;
-        padding: 0.8rem 2.2rem; border-radius: 50px; text-decoration: none;
+        padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none;
         border: 2px solid var(--accent); transition: var(--transition); cursor: pointer;
       }
-      .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-glow); }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--accent-glow); }
       .btn-ghost { background: transparent; color: var(--accent); border-color: var(--accent); padding: 0.5rem 1.2rem; font-size: 0.85rem; }
       .full { width: 100%; margin-top: 1rem; }
 
@@ -79,43 +79,49 @@
         border-radius: 50px; border: 1px solid rgba(0, 224, 255, 0.2); margin-bottom: 1.5rem;
       }
 
-      h1 { font-size: clamp(2.2rem, 7vw, 4rem); margin-bottom: 1rem; line-height: 1.1; font-weight: 800; }
-      .lede { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; }
+      h1 { font-size: clamp(2.2rem, 7vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; }
+      .lede { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 500px; }
 
       /* ----- 5. CARDS & GRID ----- */
       .glass-card {
         background: var(--surface); padding: 2.5rem; border-radius: var(--radius);
-        border: 1px solid var(--border); transition: var(--transition);
+        border: 1px solid var(--border); position: relative; overflow: hidden;
       }
+      .glass-card::before {
+        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+        background: linear-gradient(90deg, var(--accent), transparent);
+      }
+
       .info-card {
         background: var(--surface); padding: 2rem; border-radius: var(--radius);
         border: 1px solid var(--border); transition: var(--transition);
       }
       .info-card:hover { border-color: var(--accent); transform: translateY(-5px); }
 
-      .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+      .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
 
       /* ----- 6. ELEMENTS ----- */
-      .pill-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+      .pill-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem; }
       .pill {
-        font-size: 0.8rem; font-weight: 600; padding: 0.4rem 0.9rem;
+        font-size: 0.8rem; font-weight: 600; padding: 0.4rem 1rem;
         background: var(--surface-light); border: 1px solid var(--border); border-radius: 50px;
         color: var(--text-secondary);
       }
 
-      .label { color: var(--accent); text-transform: uppercase; font-size: 0.75rem; font-weight: 800; margin-bottom: 0.5rem; display: block; }
-      .list { list-style: none; margin: 1rem 0; }
+      .label { color: var(--accent); text-transform: uppercase; font-size: 0.75rem; font-weight: 800; margin-bottom: 0.5rem; }
+      .list { list-style: none; }
       .list li {
-        margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;
+        margin-bottom: 1rem; padding-left: 1.75rem; position: relative;
         color: var(--text-secondary); font-size: 0.95rem;
       }
       .list li::before {
-        content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: bold;
+        content: "\f058"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+        position: absolute; left: 0; color: var(--accent);
       }
 
       /* ----- 7. SECTIONS ----- */
       .section { padding: 4rem 0; }
-      .muted { background-color: #0d1016; }
+      .muted { background-color: #0d1117; }
       .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
       h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 1.5rem; }
 
@@ -123,53 +129,52 @@
       .register-grid { display: grid; grid-template-columns: 1fr 400px; gap: 3rem; align-items: start; }
       .register-card {
         background: var(--surface-light); padding: 2.5rem; border-radius: var(--radius);
-        border: 1px solid var(--border); box-shadow: var(--shadow);
+        border: 1px solid var(--accent);
       }
       .register-meta { list-style: none; margin: 1.5rem 0; }
       .register-meta li {
         display: flex; justify-content: space-between; padding: 0.8rem 0;
-        border-bottom: 1px solid var(--border); font-size: 0.9rem;
+        border-bottom: 1px solid var(--border); font-size: 0.95rem;
       }
       .register-meta strong { color: var(--accent); }
 
       /* ----- 9. FOOTER ----- */
-      .footer-main { background: #07090c; border-top: 1px solid var(--border); padding: 4rem 0 2rem; }
+      .footer-main { background: #05070a; border-top: 1px solid var(--border); padding: 4rem 0 2rem; }
       .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; margin-bottom: 3rem; }
       .footer-col h4 {
-        color: var(--text-primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;
+        color: var(--text-primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;
         margin-bottom: 1.5rem; border-left: 3px solid var(--accent); padding-left: 12px;
       }
       .footer-col p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; }
       
       .social-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.2rem; }
       .social-links a { 
-        width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); 
+        width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--border); 
         display: flex; align-items: center; justify-content: center; background: var(--surface);
         overflow: hidden; transition: var(--transition);
       }
       .social-links a img { width: 100%; height: 100%; object-fit: cover; }
       .social-links a:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
 
-      .inst-name { color: var(--accent); font-weight: 700; margin-bottom: 8px; display: block; text-decoration: none; font-size: 0.95rem; }
       .footer-links { list-style: none; }
-      .footer-links li { margin-bottom: 10px; }
-      .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
+      .footer-links li { margin-bottom: 0.8rem; }
+      .footer-links a { color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-size: 0.9rem; }
       .footer-links a:hover { color: var(--accent); padding-left: 5px; }
 
-      .contact-item { display: flex; gap: 10px; margin-bottom: 12px; color: var(--text-secondary); font-size: 0.85rem; }
+      .contact-item { display: flex; gap: 10px; margin-bottom: 12px; font-size: 0.85rem; color: var(--text-secondary); }
       .contact-item i { color: var(--accent); }
 
       .view-map-btn {
-        display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); 
-        color: var(--accent); padding: 6px 14px; border-radius: 4px; font-size: 0.8rem; 
-        text-decoration: none; transition: var(--transition); margin-top: 5px;
+        display: inline-flex; align-items: center; gap: 8px; padding: 0.5rem 1rem;
+        border: 1px solid var(--accent); color: var(--accent); text-decoration: none;
+        border-radius: 4px; font-size: 0.8rem; margin-top: 5px; transition: var(--transition);
       }
       .view-map-btn:hover { background: var(--accent); color: #000; }
 
       .organizer-logos { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
       .organizer-logos img { height: 40px; background: white; padding: 4px; border-radius: 4px; }
 
-      .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; color: var(--text-secondary); font-size: 0.8rem; opacity: 0.7; }
+      .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 0.8rem; opacity: 0.7; }
 
       /* ----- 10. ANIMATIONS ----- */
       [data-reveal] { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
@@ -177,10 +182,10 @@
 
       /* ----- 11. RESPONSIVE BREAKPOINTS ----- */
       @media (max-width: 1024px) {
-        .hero-grid, .register-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+        .hero-grid, .register-grid { grid-template-columns: 1fr; }
         .hero-copy { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .pill-row { justify-content: center; }
-        .hero-visual { max-width: 500px; margin: 0 auto; width: 100%; }
+        .lede { margin-left: auto; margin-right: auto; }
       }
 
       @media (max-width: 768px) {
@@ -188,10 +193,10 @@
         .two-col { grid-template-columns: 1fr; gap: 2rem; }
         .section { padding: 3rem 0; }
         
-        /* Force Event Name to show FIRST in mobile */
+        /* Ensure EVENT NAME (Hero Text) shows FIRST in mobile */
         .hero-grid { display: flex; flex-direction: column; }
         .hero-copy { order: 1; }
-        .hero-visual { order: 2; margin-top: 2rem; }
+        .hero-visual { order: 2; margin-top: 2rem; width: 100%; }
         
         .btn { width: 100%; }
       }
@@ -215,7 +220,7 @@
           <div class="hero-copy" data-reveal>
             <span class="eyebrow">Category: AI Prompt Engineering</span>
             <h1>AI Prompt Battle</h1>
-            <p class="lede">Innovation meets intelligent prompting. Showcase your command over generative models in a fast-paced battle of technical wit.</p>
+            <p class="lede">Innovation meets intelligent prompting. Showcase your command over large language models in a fast-paced battle of technical wit.</p>
             <div class="pill-row">
               <span class="pill">Department: AIML Degree</span>
               <span class="pill">Fee: ₹125/-</span>
@@ -227,8 +232,8 @@
               <p class="label">Quick Snapshot</p>
               <ul class="list compact">
                 <li>Multi-round timed prompt battle.</li>
-                <li>Three prompt tasks per round.</li>
-                <li>Permitted tools: ChatGPT, Gemini, etc.</li>
+                <li>Three unique tasks per round.</li>
+                <li>Use tools like ChatGPT, Gemini, etc.</li>
               </ul>
             </div>
           </div>
@@ -242,7 +247,7 @@
             <h2>How it runs</h2>
             <ul class="list">
               <li>High-stakes, multi-round prompt battle with strictly timed turns.</li>
-              <li>Participants receive 3 prompts per round to generate optimized outputs.</li>
+              <li>Participants receive 3 prompts per round to generate the most accurate or creative outputs.</li>
             </ul>
           </div>
           <div>
@@ -261,11 +266,11 @@
           <span class="eyebrow">Rules & Regulations</span>
           <h2>Play fair</h2>
           <ul class="list">
-            <li>Solo or team (Max 2).</li>
-            <li>3 prompts per round; respect the time cap strictly.</li>
-            <li>Permitted tools: ChatGPT, Gemini, etc.</li>
-            <li>Original, non-plagiarized prompts only.</li>
-            <li>Intentional misuse of AI safety filters results in disqualification.</li>
+            <li>Open to solo participants or teams of maximum 2.</li>
+            <li>Adhere strictly to the 3-prompt-per-round time limit.</li>
+            <li>Usage of only approved LLM tools (e.g., ChatGPT, Gemini) is allowed.</li>
+            <li>All prompts must be non-plagiarized and crafted on-the-spot.</li>
+            <li>Internet usage for research is prohibited outside the designated tools.</li>
           </ul>
         </div>
       </section>
@@ -296,15 +301,15 @@
           <div class="register-info">
             <span class="eyebrow">Registration</span>
             <h2>Lock your slot</h2>
-            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Don't miss the ultimate AI showdown. Secure your laboratory slot now.</p>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Limited entries only. Ensure you secure your system in the AIML Lab before slots run out.</p>
             <ul class="list">
-              <li>Verify your tool account access before the battle begins.</li>
-              <li>Bring a valid student ID for verification.</li>
+              <li>Check your tool account login credentials in advance.</li>
+              <li>Bring a valid college student ID card for verification.</li>
               <li>Reporting time: 9:30 AM at AIML Degree Lab.</li>
             </ul>
           </div>
           <div class="register-card">
-            <p class="label">Ready to Battle?</p>
+            <p class="label">Ready to Prompt?</p>
             <ul class="register-meta">
               <li><span>Entry Fee</span><strong>₹125/-</strong></li>
               <li><span>Department</span><strong>AIML Degree</strong></li>
@@ -322,7 +327,7 @@
         <div class="footer-grid">
           <div class="footer-col">
             <h4>CREO 2K26</h4>
-            <p>Where innovation meets legacy — a technical battlefield for the brilliant minds of AITRC Vita.</p>
+            <p>A technical and cultural battlefield for the brilliant minds of AITRC Vita. Forge your path in a festival of innovation.</p>
             <div class="social-links">
               <a href="https://www.instagram.com/aitrcvita" target="_blank"><img src="../img/instagram.jpg" alt="IG"></a>
               <a href="https://www.linkedin.com/in/adarsh-institute-of-technology-vita-64115a141/" target="_blank"><img src="../img/linkedin.avif" alt="IN"></a>
@@ -333,14 +338,21 @@
 
           <div class="footer-col">
             <h4>Institution</h4>
-            <a href="https://www.aitrcvita.edu.in/" class="inst-name"><i class="fas fa-globe"></i> AITRC, Vita</a>
+            <a href="https://www.aitrcvita.edu.in/" class="inst-name" style="color: var(--accent); text-decoration: none; font-weight: 700; margin-bottom: 8px; display: block;"><i class="fas fa-globe"></i> AITRC, Vita</a>
             <p>Adarsh Institute of Technology and Research Center, Vita. Empowering students with quality technical education.</p>
+            
+            <h4 style="margin-top: 20px;">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="events.html">Events</a></li>
+              <li><a href="index.html">About</a></li>
+            </ul>
           </div>
 
           <div class="footer-col">
             <h4>Contact Us</h4>
-            <div class="contact-item"><i class="fas fa-envelope"></i><span>creoworld@aitrcvita.edu.in</span></div>
-            <div class="contact-item"><i class="fas fa-location-dot"></i><span>AITRC,MIDC Vita, Sangli road, Vita, 415311</span></div>
+            <div class="contact-item"><i class="fas fa-envelope"></i><span>contact@creo.tech</span></div>
+            <div class="contact-item"><i class="fas fa-location-dot"></i><span>AITRC Vita, MIDC Vita, MH 415311</span></div>
             <a href="https://maps.app.goo.gl/2hbUMzWp31BV2LweA" class="view-map-btn"><i class="fas fa-map-marker-alt"></i> View on Map</a>
           </div>
 
@@ -354,6 +366,7 @@
             </div>
           </div>
         </div>
+
         <div class="footer-bottom">
           <p>© 2026 CREO 2K26. All rights reserved. Designed for innovators.</p>
         </div>
